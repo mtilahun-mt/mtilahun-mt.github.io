@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musie Tilahun Designs | Home</title>
+    <style>
+        /* CSS Variables using your Coolors Palette */
+        :root {
+            --dark-violet: #2C1320;
+            --vintage-grape: #5F4B66;
+            --lavender-grey: #A7ADC6;
+            --muted-blue: #8797AF;
+            --blue-slate: #56667A;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--lavender-grey);
+            color: var(--dark-violet);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--dark-violet);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--vintage-grape);
+        }
+
+        header img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--vintage-grape);
+            border-left: 5px solid var(--blue-slate);
+            padding-left: 10px;
+        }
+
+        /* Non-standard Bullet Style */
+        .amazing-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .amazing-list li::before {
+            content: "✦";
+            color: var(--blue-slate);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1.5em;
+        }
+
+        .amazing-list li {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        .contact-box {
+            background-color: var(--blue-slate);
+            color: white;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: var(--vintage-grape);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://openclipart.org/download/305221/abstract-user-flat-4.svg" alt="Musie Tilahun Designs Logo">
+        <h1>Musie Tilahun Designs</h1>
+    </header>
+
+    <main>
+        <h2>Welcome to Our Firm</h2>
+        <p>Musie Tilahun Designs is a premier creative agency dedicated to transforming digital visions into reality. We believe that exceptional design is the bridge between a brand and its audience, focusing on clarity, impact, and modern aesthetics.</p>
+
+        <h2>Our Services</h2>
+        <p>We provide a comprehensive suite of services including responsive web design, custom brand identity development, and user experience (UX) optimization. Our team ensures that every pixel serves a purpose for your business goals.</p>
+
+        <h2>5 Amazing Things About Us</h2>
+        <ul class="amazing-list">
+            <li>User-Centric Approach: We build for the human on the other side of the screen.</li>
+            <li>Pixel-Perfect Precision: No detail is too small for our design team.</li>
+            <li>Collaborative Spirit: Your vision is the core of our creative process.</li>
+            <li>Modern Tech Stack: We use the latest tools to ensure speed and security.</li>
+            <li>Data-Driven Results: Our designs don't just look good; they perform.</li>
+        </ul>
+
+        <section class="contact-box">
+            <h3>Contact Us</h3>
+            <p><strong>Email:</strong> hello@musietilahun.com</p>
+            <p><strong>Phone:</strong> (704) 555-0199</p>
+            <p><strong>Office:</strong> 9201 University City Blvd, Charlotte, NC 28223</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Page designed by Musie Tilahun Designs &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
