@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singing | Musie Tilahun | ITIS 3135</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           CSS CUSTOM PROPERTIES (Color Scheme)
+           Deep plum/gold — distinct from any main site
+        ========================================= */
+        :root {
+            --bg:          #1a0a2e;
+            --surface:     #271040;
+            --surface2:    #341558;
+            --gold:        #d4a843;
+            --gold-light:  #e8c97a;
+            --rose:        #c0607a;
+            --text:        #ede8f5;
+            --text-muted:  #a090b8;
+            --border:      rgba(212,168,67,0.25);
+            --radius:      10px;
+            --shadow:      0 8px 40px rgba(0,0,0,0.45);
+        }
+
+        /* =========================================
+           RESET & BASE
+        ========================================= */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            min-height: 100vh;
+            background-image: radial-gradient(ellipse at 15% 20%, rgba(192,96,122,0.12) 0%, transparent 55%), radial-gradient(ellipse at 85% 80%, rgba(212,168,67,0.10) 0%, transparent 55%);
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+        header {
+            background: linear-gradient(135deg, #1a0a2e 0%, #341558 60%, #1a0a2e 100%);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            padding: 36px 20px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 30px rgba(212,168,67,0.4);
+            margin-bottom: 6px;
+        }
+
+        header .subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+            border-color: var(--border);
+        }
+
+        nav a.active {
+            color: var(--gold);
+            background: rgba(212,168,67,0.12);
+            border-color: var(--gold);
+        }
+
+        .nav-divider {
+            color: var(--rose);
+            font-size: 0.9rem;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* =========================================
+           MAIN CONTENT WRAPPER
+        ========================================= */
+        main {
+            max-width: 860px;
+            margin: 40px auto;
+            padding: 0 20px 60px;
+        }
+
+        /* =========================================
+           SECTIONS — hidden by default, only #what shown
+        ========================================= */
+        section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           SECTION HEADINGS
+        ========================================= */
+        section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            color: var(--gold);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 28px;
+        }
+
+        section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin: 24px 0 8px;
+        }
+
+        section p {
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        /* =========================================
+           CARDS / SURFACE BOXES
+        ========================================= */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px 26px;
+            margin-bottom: 24px;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .card-row { grid-template-columns: 1fr; }
+        }
+
+        /* =========================================
+           FIGURE / IMAGES
+        ========================================= */
+        figure {
+            margin: 24px 0;
+            text-align: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        figcaption {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--gold-light);
+            margin-top: 10px;
+        }
+
+        .ai-prompt {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: rgba(212,168,67,0.06);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* =========================================
+           LISTS
+        ========================================= */
+        ul, ol {
+            padding-left: 22px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        li strong {
+            color: var(--gold-light);
+        }
+
+        /* =========================================
+           TABLES
+        ========================================= */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        thead {
+            background: var(--surface2);
+        }
+
+        th {
+            color: var(--gold);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 11px 16px;
+            border-bottom: 1px solid rgba(212,168,67,0.1);
+            color: var(--text);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(212,168,67,0.05);
+        }
+
+        /* =========================================
+           FORMS
+        ========================================= */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            padding: 10px 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--gold);
+        }
+
+        select option {
+            background: var(--surface);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        button[type=submit] {
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+            border-radius: 6px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 12px 28px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        button[type=submit]:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            margin-top: 0;
+        }
+
+        /* =========================================
+           HIGHLIGHT STAT BOXES
+        ========================================= */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 560px) {
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+
+        .stat-box {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-box .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-box .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 6px;
+        }
+
+        /* =========================================
+           AI PROMPTS SECTION BLOCKS
+        ========================================= */
+        .prompt-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--rose);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            margin-bottom: 16px;
+        }
+
+        .prompt-block .prompt-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--rose);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .prompt-block p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            margin-bottom: 14px;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--gold-light);
+        }
+
+        .validation-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .validation-links a {
+            display: inline-block;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 7px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .validation-links a:hover {
+            background: var(--gold);
+            color: var(--bg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header>
+        <h1>🎵 Vocal Artistry: The Joy of Singing</h1>
+        <p class="subtitle">A Hobby Site by Musie Tilahun</p>
+        <nav>
+            <a onclick="showSection('what')" id="nav-what" class="active">What</a>
+            <span class="nav-divider" aria-hidden="true">♪</span>
+            <a onclick="showSection('who')"  id="nav-who">Who</a>
+            <span class="nav-divider" aria-hidden="true">♪</span>
+            <a onclick="showSection('when')" id="nav-when">When</a>
+            <span class="nav-divider" aria-hidden="true">♪</span>
+            <a onclick="showSection('where')" id="nav-where">Where</a>
+            <span class="nav-divider" aria-hidden="true">♪</span>
+            <a onclick="showSection('how')"  id="nav-how">How</a>
+            <span class="nav-divider" aria-hidden="true">♪</span>
+            <a onclick="showSection('why')"  id="nav-why">Why</a>
+            <span class="nav-divider" aria-hidden="true">♪</span>
+            <a onclick="showSection('ai')"   id="nav-ai">AI Prompts</a>
+        </nav>
+    </header>
+
+    <!-- ===================== MAIN ===================== -->
+    <main>
+
+        <!-- ===== WHAT (default visible) ===== -->
+        <section id="what" class="active">
+            <h2>What Is Singing?</h2>
+
+            <p>Singing is the act of producing musical sounds with the human voice, shaping pitch, rhythm, and timbre into an expressive art form. It is one of the oldest and most universal forms of human expression — every culture on Earth has a tradition of vocal music. From the resonant vibrato of an opera soprano to the raw, soulful riffs of a blues vocalist, singing encompasses an enormous spectrum of styles, techniques, and emotions.</p>
+
+            <p>At its core, singing is the coordination of dozens of muscles, the diaphragm, the lungs, the larynx, the soft palate, the tongue, and the lips, all working in harmony to create sound that communicates what words alone cannot. It is simultaneously a physical skill, a creative craft, and a deeply personal form of self-expression.</p>
+
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <div class="stat-number">40,000+</div>
+                    <div class="stat-label">Years of vocal tradition</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">~100</div>
+                    <div class="stat-label">Distinct vocal genres worldwide</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1 in 3</div>
+                    <div class="stat-label">Adults sing regularly</div>
+                </div>
+            </div>
+
+            <figure>
+                <img src="images/singing-main.jpg" alt="A person singing passionately into a vintage silver microphone under warm stage lighting" width="760" height="430">
+                <figcaption>The timeless art of live vocal performance.</figcaption>
+            </figure>
+            <p class="ai-prompt"><i>AI Image Prompt — "A photorealistic close-up portrait of a person singing passionately into a vintage silver microphone, warm amber stage lighting from above, dramatic shadows, shallow depth of field, 4K, cinematic."</i></p>
+
+            <h3>Core Elements of Singing</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>Pitch:</strong> The ability to hit the correct musical note consistently, requiring fine motor control of the vocal folds.</li>
+                    <li><strong>Breath Support:</strong> Using the diaphragm to maintain a steady column of air that powers the voice without strain.</li>
+                    <li><strong>Resonance:</strong> Shaping the vocal tract — mouth, throat, and chest — to amplify and color the sound naturally.</li>
+                    <li><strong>Diction:</strong> Articulating words clearly so lyrics are understood even at full vocal volume.</li>
+                    <li><strong>Dynamics:</strong> Controlling volume and intensity, from a soft pianissimo whisper to a powerful forte climax.</li>
+                    <li><strong>Expression:</strong> Communicating the emotional content of a song through phrasing, timing, and tone color.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== WHO ===== -->
+        <section id="who">
+            <h2>Who Sings?</h2>
+
+            <p>Singing belongs to everyone. While professional vocalists dedicate years to formal training, millions more sing in choirs, at karaoke nights, in churches, in the car, and in the shower — and all of it counts. The singing community spans amateurs and icons, children and retirees, classically trained soloists and self-taught indie artists.</p>
+
+            <p>Professionally, singers are categorized by voice type — a system developed in Western classical tradition but adapted across genres worldwide. Understanding your voice type helps you choose repertoire that flatters your range and protects your vocal health over a lifetime of singing.</p>
+
+            <figure>
+                <img src="images/choir.jpg" alt="A large diverse choir singing together in a grand concert hall" width="760" height="430">
+                <figcaption>A community of voices unified in harmony.</figcaption>
+            </figure>
+            <p class="ai-prompt"><i>AI Image Prompt — "A photorealistic wide-angle shot of a large diverse choir of 40 people singing with passion in a grand concert hall with warm lighting, wearing formal black attire, dramatic ceiling architecture visible."</i></p>
+
+            <h3>Voice Types</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Voice Type</th>
+                            <th>Range</th>
+                            <th>Typical Sound</th>
+                            <th>Famous Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Soprano</td>
+                            <td>C4 – C6</td>
+                            <td>Bright, soaring, clear</td>
+                            <td>Maria Callas</td>
+                        </tr>
+                        <tr>
+                            <td>Mezzo-Soprano</td>
+                            <td>A3 – A5</td>
+                            <td>Warm, rich, full</td>
+                            <td>Adele</td>
+                        </tr>
+                        <tr>
+                            <td>Contralto</td>
+                            <td>E3 – E5</td>
+                            <td>Deep, dark, powerful</td>
+                            <td>Tracy Chapman</td>
+                        </tr>
+                        <tr>
+                            <td>Tenor</td>
+                            <td>C3 – C5</td>
+                            <td>Bright, ringing, heroic</td>
+                            <td>Pavarotti</td>
+                        </tr>
+                        <tr>
+                            <td>Baritone</td>
+                            <td>G2 – G4</td>
+                            <td>Warm, resonant, versatile</td>
+                            <td>Frank Sinatra</td>
+                        </tr>
+                        <tr>
+                            <td>Bass</td>
+                            <td>E2 – E4</td>
+                            <td>Deep, authoritative, full</td>
+                            <td>Barry White</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Find Your Voice — Quick Quiz</h3>
+            <div class="card">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="e.g. Musie Tilahun">
+                </div>
+                <div class="form-group">
+                    <label for="range">Where is your most comfortable singing range?</label>
+                    <select id="range" name="range">
+                        <option value="">— Select one —</option>
+                        <option>High (above middle C)</option>
+                        <option>Middle (around middle C)</option>
+                        <option>Low (below middle C)</option>
+                        <option>I'm not sure yet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="style">Preferred genre</label>
+                    <select id="style" name="style">
+                        <option value="">— Select one —</option>
+                        <option>Classical / Opera</option>
+                        <option>Pop / R&amp;B</option>
+                        <option>Jazz / Blues</option>
+                        <option>Gospel / Choral</option>
+                        <option>Musical Theatre</option>
+                        <option>Rock / Indie</option>
+                    </select>
+                </div>
+                <button type="submit" onclick="alert('Thanks! Keep singing, ' + (document.getElementById(\'name\').value || \'friend\') + '! 🎵')">Find My Voice Type</button>
+            </div>
+        </section>
+
+        <!-- ===== WHEN ===== -->
+        <section id="when">
+            <h2>When to Sing?</h2>
+
+            <p>The voice is a living instrument — it responds to sleep, hydration, stress, and the time of day. Most professional vocalists structure their practice deliberately rather than singing whenever the mood strikes. Building a thoughtful schedule protects the delicate tissues of the larynx and produces faster, more sustainable improvement.</p>
+
+            <p>Mornings are typically the hardest time to sing: the vocal folds are stiff after sleep and the body hasn't fully warmed up. Many singers avoid demanding repertoire before noon. Late morning to early afternoon is often the "golden window" when the voice is warmed but not yet fatigued. Evening performances are standard in the industry, which is why professionals use afternoon nap rituals and warm-up routines to arrive in peak condition.</p>
+
+            <figure>
+                <img src="images/studio.jpg" alt="A cozy music room with a piano, a metronome, warm afternoon light streaming through a window, and sheet music on a stand" width="760" height="430">
+                <figcaption>Consistent daily practice is the engine of vocal growth.</figcaption>
+            </figure>
+            <p class="ai-prompt"><i>AI Image Prompt — "A photorealistic cozy music practice room, upright piano, metronome on top, open sheet music on a stand, warm golden afternoon sunlight through large windows, houseplants, no people, aesthetic and inviting."</i></p>
+
+            <h3>Ideal Weekly Practice Schedule</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Focus</th>
+                            <th>Duration</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td>Technique — scales &amp; arpeggios</td>
+                            <td>30 min</td>
+                            <td>Start with gentle lip trills</td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>Repertoire — new material</td>
+                            <td>45 min</td>
+                            <td>Slow practice, focus on pitch</td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>Rest or light humming only</td>
+                            <td>10 min max</td>
+                            <td>Vocal recovery is essential</td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>Dynamics &amp; expression</td>
+                            <td>40 min</td>
+                            <td>Emotional storytelling focus</td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>Full run-through performance</td>
+                            <td>60 min</td>
+                            <td>Simulate concert conditions</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>Sight-reading / ear training</td>
+                            <td>30 min</td>
+                            <td>Piano or app assistance helpful</td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td>Complete rest</td>
+                            <td>—</td>
+                            <td>Hydrate and sleep well</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Seasonal Considerations</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>Winter:</strong> Cold air and dry heating dry out the vocal cords. Use a humidifier and increase water intake. Avoid singing outdoors in freezing temperatures.</li>
+                    <li><strong>Spring:</strong> Allergy season is a vocalist's enemy. Antihistamines can dry the voice; consult a doctor about vocal-safe allergy management.</li>
+                    <li><strong>Summer:</strong> Heat and humidity can actually help the voice feel more open, but air conditioning causes dryness. Carry water everywhere.</li>
+                    <li><strong>Fall:</strong> The ideal season for most singers — moderate humidity, cooler temperatures, and the start of concert season.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== WHERE ===== -->
+        <section id="where">
+            <h2>Where to Sing?</h2>
+
+            <p>The acoustic environment fundamentally shapes how a voice sounds and feels. Hard surfaces like tile create lively, reverberant spaces that make the voice sound fuller and more resonant — which is exactly why the shower produces such a pleasant singing experience. Purpose-built performance and recording spaces are engineered to control these reflections deliberately.</p>
+
+            <p>Whether you are practicing at home, auditioning at a studio, or performing at a venue, choosing the right environment for the right activity dramatically impacts results. Below are the most common singing environments and what makes each unique.</p>
+
+            <figure>
+                <img src="images/studio.jpg" alt="A professional recording studio with a large-diaphragm condenser microphone in an isolation booth, acoustic foam walls, and a control room visible through glass" width="760" height="430">
+                <figcaption>A professional recording studio: where vocals become records.</figcaption>
+            </figure>
+            <p class="ai-prompt"><i>AI Image Prompt — "A photorealistic professional vocal recording studio booth, large-diaphragm condenser microphone on a stand, acoustic foam walls, pop filter, warm LED lighting, control room glass panel behind, cinematic look."</i></p>
+
+            <h3>Singing Venues Compared</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Venue</th>
+                            <th>Acoustics</th>
+                            <th>Best For</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Shower / Bathroom</td>
+                            <td>Very live, lots of reverb</td>
+                            <td>Casual warm-ups, confidence</td>
+                            <td>Free</td>
+                        </tr>
+                        <tr>
+                            <td>Living Room</td>
+                            <td>Moderate, soft furnishings absorb</td>
+                            <td>Daily practice, learning songs</td>
+                            <td>Free</td>
+                        </tr>
+                        <tr>
+                            <td>Church / Worship Hall</td>
+                            <td>Long reverb, expansive sound</td>
+                            <td>Choral rehearsal, performance</td>
+                            <td>Often free for members</td>
+                        </tr>
+                        <tr>
+                            <td>Recording Studio</td>
+                            <td>Dead (controlled), very dry</td>
+                            <td>Professional recording, demos</td>
+                            <td>$50 – $300 / hr</td>
+                        </tr>
+                        <tr>
+                            <td>Concert Hall</td>
+                            <td>Engineered for clarity &amp; projection</td>
+                            <td>Classical, opera, large ensemble</td>
+                            <td>Rental fees vary widely</td>
+                        </tr>
+                        <tr>
+                            <td>Open Mic Venue / Bar</td>
+                            <td>Variable, PA-dependent</td>
+                            <td>Performance experience, stage fright</td>
+                            <td>Usually free to perform</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Find Singing Opportunities Near You</h3>
+            <div class="card">
+                <div class="form-group">
+                    <label for="city">Your City</label>
+                    <input type="text" id="city" name="city" placeholder="e.g. Charlotte, NC">
+                </div>
+                <div class="form-group">
+                    <label for="venue-type">What type of venue?</label>
+                    <select id="venue-type" name="venue-type">
+                        <option value="">— Select one —</option>
+                        <option>Community Choir</option>
+                        <option>Open Mic Night</option>
+                        <option>Recording Studio</option>
+                        <option>Voice Lessons</option>
+                        <option>Karaoke Bar</option>
+                    </select>
+                </div>
+                <button type="submit" onclick="alert('Search coming soon! Try Meetup.com or Google Maps for \'' + document.getElementById(\'venue-type\').value + '\' in ' + document.getElementById(\'city\').value + '.')">Search Locations</button>
+            </div>
+        </section>
+
+        <!-- ===== HOW ===== -->
+        <section id="how">
+            <h2>How to Start Singing</h2>
+
+            <p>Learning to sing well is less about raw talent and far more about disciplined, structured practice. The voice is a muscular instrument — it responds to training the same way any other muscle does: with gradual, consistent work. The biggest mistake beginners make is skipping foundational technique and jumping straight to performing difficult songs, which can lead to strain or bad habits that take years to correct.</p>
+
+            <p>The journey begins with three pillars: posture, breath, and resonance. Once those are stable, pitch accuracy, range expansion, and stylistic expression follow naturally. Below is a structured beginner roadmap and the core exercises used by professional vocal coaches.</p>
+
+            <figure>
+                <img src="images/singing_lesson.jpg" alt="A vocal coach and student in a bright studio, the coach demonstrating proper posture while the student stands at a microphone" width="760" height="430">
+                <figcaption>One-on-one coaching accelerates progress faster than self-study alone.</figcaption>
+            </figure>
+            <p class="ai-prompt"><i>AI Image Prompt — "A photorealistic image of a professional vocal coach, middle-aged woman, demonstrating breathing posture to a young adult male student standing at a microphone in a bright, modern music studio. Natural light, warm tones."</i></p>
+
+            <h3>Beginner Roadmap</h3>
+            <ol>
+                <li><strong>Posture First:</strong> Stand with feet shoulder-width apart, knees slightly relaxed, spine tall, chin parallel to the floor. Good posture opens the airway and allows full lung expansion — everything else depends on it.</li>
+                <li><strong>Master Diaphragmatic Breathing:</strong> Place your hand on your belly. When you inhale, your belly should expand outward, not your chest rise upward. Practice slow inhales (4 counts) and controlled exhales (8 counts) on a hissing sound daily for two weeks before singing a single note.</li>
+                <li><strong>Warm Up Every Single Time:</strong> Begin with lip trills (a motorboat sound) ascending and descending scales. Then move to "mum" or "nay" vocalises. Never jump into full voice singing cold.</li>
+                <li><strong>Work Scales Slowly:</strong> Use a piano app or keyboard. Sing 5-note scales (do-re-mi-fa-sol-fa-mi-re-do) on various vowels ("ah," "ee," "oh"). Move up by half-steps until you feel tension, then stop.</li>
+                <li><strong>Record Yourself:</strong> This is the single most powerful practice tool available. Most beginners are shocked by the difference between how they sound internally and externally. Listen back critically and note pitch issues without judgment.</li>
+                <li><strong>Learn Simple Repertoire:</strong> Choose songs within your comfortable range and in genres you love. Don't attempt challenging material until technique is solid.</li>
+                <li><strong>Seek Feedback:</strong> Find a teacher, join a choir, or attend open mics. Outside ears catch issues you cannot hear yourself.</li>
+            </ol>
+
+            <h3>Essential Vocal Exercises</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Exercise</th>
+                            <th>Purpose</th>
+                            <th>How Long</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lip Trills / Bubble</td>
+                            <td>Warms up cords gently, builds breath support</td>
+                            <td>3–5 min</td>
+                        </tr>
+                        <tr>
+                            <td>Humming</td>
+                            <td>Activates resonance, very gentle on folds</td>
+                            <td>2–3 min</td>
+                        </tr>
+                        <tr>
+                            <td>"Nay Nay" Exercise</td>
+                            <td>Opens nasal resonance, brightens tone</td>
+                            <td>3 min</td>
+                        </tr>
+                        <tr>
+                            <td>Sirens (glissando)</td>
+                            <td>Smooths the passaggio (register break)</td>
+                            <td>2–3 min</td>
+                        </tr>
+                        <tr>
+                            <td>Tongue Twisters</td>
+                            <td>Improves diction and articulation speed</td>
+                            <td>2 min</td>
+                        </tr>
+                        <tr>
+                            <td>Sustained Vowels</td>
+                            <td>Builds breath control and pitch stability</td>
+                            <td>5 min</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== WHY ===== -->
+        <section id="why">
+            <h2>Why Sing?</h2>
+
+            <p>The reasons people sing are as varied as the people themselves. For some, it is the pursuit of artistic excellence — the thrill of mastering a difficult aria or nailing a complex jazz improvisation. For others, it is purely social: the bonding that happens in a choir, a band, or around a campfire is unlike anything else. And for many, singing is simply therapeutic — a release valve for emotion that words alone cannot discharge.</p>
+
+            <p>Beyond the personal experience, science has consistently confirmed that singing produces measurable physiological and psychological benefits. It is, in a very real sense, one of the most holistic and accessible forms of self-care available to humans — and it requires no equipment, no membership, and no prior skill to begin.</p>
+
+            <figure>
+                <img src="images/happy_singer.jpg" alt="A joyful person singing with eyes closed and a wide smile at an outdoor concert under colorful stage lights" width="760" height="430">
+                <figcaption>The emotional release of singing is unlike any other feeling.</figcaption>
+            </figure>
+            <p class="ai-prompt"><i>AI Image Prompt — "A photorealistic candid photo of a joyful young woman singing with her eyes closed and a huge smile, outdoor festival stage, colorful purple and gold stage lights, summer night, warm atmosphere, crowd visible blurred behind."</i></p>
+
+            <h3>Proven Benefits of Singing</h3>
+            <div class="card-row">
+                <div class="card">
+                    <h3>🧠 Mental Health</h3>
+                    <p>Singing triggers the release of endorphins and oxytocin — the brain's "feel-good" chemicals. Regular singers report lower levels of anxiety and depression, and higher overall life satisfaction.</p>
+                </div>
+                <div class="card">
+                    <h3>💪 Physical Health</h3>
+                    <p>Singing is an aerobic exercise. It strengthens the diaphragm, improves lung capacity, and even improves posture and core strength over time. Choir singers show improved immune function compared to non-singers.</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 Social Connection</h3>
+                    <p>Group singing synchronizes heartbeats among participants. Choirs and singing groups consistently show stronger social bonds and lower loneliness ratings than equivalent non-singing social groups.</p>
+                </div>
+                <div class="card">
+                    <h3>🎓 Cognitive Benefits</h3>
+                    <p>Learning lyrics and musical notation strengthens memory. Children who receive vocal music training consistently outperform peers in reading, language acquisition, and mathematical reasoning.</p>
+                </div>
+                <div class="card">
+                    <h3>😴 Better Sleep</h3>
+                    <p>Regular singing exercises the muscles of the throat and soft palate, reducing snoring and symptoms of mild sleep apnea, leading to deeper, more restorative sleep.</p>
+                </div>
+                <div class="card">
+                    <h3>🎭 Emotional Expression</h3>
+                    <p>Singing gives form and language to emotions that are difficult to articulate. For grief, joy, longing, or gratitude — music reaches where words fall short.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <p><strong>Bottom line:</strong> Singing doesn't require a perfect voice. It doesn't require years of training or a stage or an audience. It only requires a willingness to make sound — and in that sound, to find yourself.</p>
+            </div>
+        </section>
+
+        <!-- ===== AI PROMPTS ===== -->
+        <section id="ai">
+            <h2>AI Prompts Used</h2>
+
+            <p>This page was built with assistance from <strong>Claude (Anthropic, claude-sonnet-4-6)</strong>. Below is a complete log of the prompts used to generate the HTML, CSS, JavaScript, and written content. All images were generated with AI using the prompts listed on their respective pages.</p>
+
+            <h3>Structure &amp; Code Prompts</h3>
+
+            <div class="prompt-block">
+                <div class="prompt-label">Prompt 1 — Full Page Rewrite</div>
+                <p>"I have a midterm assignment to build a single-page hobby website about singing. Here is my existing code and the rubric. Please do a full rewrite hitting all rubric requirements: embedded stylesheet, CRAP principles, deep plum/gold color scheme different from any main site, section hiding via JS, active nav state, all 7 sections (What/Who/When/Where/How/Why/AI Prompts) each with at minimum 3 items including a figure, validation links in footer, footer design firm link, a contact/quiz form in at least two sections, rich paragraph content, tables, and proper HTML5 structure."</p>
+            </div>
+
+            <div class="prompt-block">
+                <div class="prompt-label">Prompt 2 — Section Content</div>
+                <p>"Write rich, detailed paragraph content for each section of a singing hobby website: What (explain what singing is), Who (voice types), When (practice scheduling and seasons), Where (acoustic environments), How (beginner technique roadmap), Why (benefits of singing). Each section needs at least two substantial paragraphs and enough detail to score full marks on a college rubric."</p>
+            </div>
+
+            <div class="prompt-block">
+                <div class="prompt-label">Prompt 3 — Navigation Active State</div>
+                <p>"Add an active CSS class to the currently selected nav link in a JS showSection() function that hides all sections and shows the target one. The active nav link should be visually distinct with a gold border and background tint."</p>
+            </div>
+
+            <div class="prompt-block">
+                <div class="prompt-label">Prompt 4 — Footer Validation Links</div>
+                <p>"Add HTML, CSS, and WAVE accessibility validation links to the footer of my page. The HTML validator should point to https://validator.w3.org, the CSS validator to https://jigsaw.w3.org/css-validator/, and the accessibility checker to https://wave.webaim.org. Style them as rounded pill buttons matching the page's gold-on-dark theme."</p>
+            </div>
+
+            <div class="prompt-block">
+                <div class="prompt-label">Prompt 5 — Stat Grid Component</div>
+                <p>"Create a 3-column CSS grid of stat boxes for the What section showing interesting singing facts, styled to match a deep plum and gold color scheme with large Cormorant Garamond numerals."</p>
+            </div>
+
+            <h3>Image Generation Prompts</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Prompt Used</th>
+                            <th>Tool</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>singing-main.jpg</td>
+                            <td>Photorealistic close-up of singer at vintage silver microphone, amber stage lighting, 4K cinematic</td>
+                            <td>Gemini Image</td>
+                        </tr>
+                        <tr>
+                            <td>choir.jpg</td>
+                            <td>Diverse choir of 40 people in concert hall, formal black attire, dramatic architecture</td>
+                            <td>Gemini Image</td>
+                        </tr>
+                        <tr>
+                            <td>practice-schedule.jpg</td>
+                            <td>Cozy music practice room, upright piano, metronome, sheet music stand, golden afternoon light</td>
+                            <td>Gemini Image</td>
+                        </tr>
+                        <tr>
+                            <td>studio.jpg</td>
+                            <td>Professional vocal recording studio booth, large-diaphragm condenser mic, acoustic foam, control room glass</td>
+                            <td>Gemini Image</td>
+                        </tr>
+                        <tr>
+                            <td>vocal-lesson.jpg</td>
+                            <td>Vocal coach demonstrating posture to student at microphone, bright modern music studio, natural light</td>
+                            <td>Gemini Image</td>
+                        </tr>
+                        <tr>
+                            <td>joy-of-singing.jpg</td>
+                            <td>Joyful woman singing at outdoor festival, eyes closed, colorful purple and gold stage lights, summer night</td>
+                            <td>Gemini Image</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <p>Designed by <a href="https://webpages.charlotte.edu/mtilahun-mt/itis3135/">Musie Tilahun &mdash; Design Firm</a></p>
+        <div class="validation-links">
+            <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fwebpages.charlotte.edu%2Fmtilahun-mt.github.io%2Fitis3135%2Fhobby%2Findex.html" target="_blank" rel="noopener">Validate HTML</a>
+            <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fwebpages.charlotte.edu%2Fmtilahun-mt.github.io%2Fitis3135%2Fhobby%2Findex.html" target="_blank" rel="noopener">Validate CSS</a>
+            <a href="https://wave.webaim.org/report#/https://webpages.charlotte.edu/mtilahun-mt.github.io/itis3135/hobby/index.html" target="_blank" rel="noopener">Accessibility Check</a>
+        </div>
+    </footer>
+
+    <!-- ===================== JS ===================== -->
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(function(sec) {
+                sec.classList.remove('active');
+            });
+
+            // Remove active from all nav links
+            document.querySelectorAll('nav a').forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            // Show the target section
+            var target = document.getElementById(sectionId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Highlight the correct nav link
+            var navLink = document.getElementById('nav-' + sectionId);
+            if (navLink) {
+                navLink.classList.add('active');
+            }
+
+            // Scroll to top of main
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
