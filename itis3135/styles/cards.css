@@ -1,0 +1,122 @@
+/* ── Playing Cards ───────────────────────────────────── */
+
+.cards-intro {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 40px;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    padding: 10px 0 40px;
+}
+
+/* Base card — playing-card proportions */
+.card {
+    width: 190px;
+    min-height: 310px;
+    border: 2px solid #333333;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 4px 6px 14px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Top corner pip */
+.card-corner {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+}
+
+.card-corner .pip-value {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.card-corner .pip-suit {
+    font-size: 1rem;
+}
+
+/* Center illustration area */
+.card-art {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    font-size: 3.2rem;
+    color: #ffffff;
+}
+
+/* Card body / stats */
+.card-body {
+    padding: 8px 10px 10px;
+    border-top: 1px solid #dddddd;
+}
+
+.card-body .card-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #333333;
+    margin: 0 0 4px;
+}
+
+.card-body .card-stat {
+    font-size: 0.75rem;
+    color: #333333;
+    margin: 2px 0;
+}
+
+/* Bottom corner pip (rotated) */
+.card-corner-bottom {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.1;
+    transform: rotate(180deg);
+}
+
+/* ── Suit colour themes ────────────────────────────── */
+
+/* Green Tea — forest green  (#1a5c38 on white = 8.0:1) */
+.suit-green .card-corner,
+.suit-green .card-corner-bottom { color: #1a5c38; }
+.suit-green .card-art            { background-color: #1a5c38; }
+
+/* Black Tea — near-black  (#1a1a1a on white = 18.1:1) */
+.suit-black .card-corner,
+.suit-black .card-corner-bottom  { color: #1a1a1a; }
+.suit-black .card-art             { background-color: #1a1a1a; }
+
+/* Oolong — navy blue  (#0056b3 on white = 7.0:1) */
+.suit-oolong .card-corner,
+.suit-oolong .card-corner-bottom { color: #004a99; }
+.suit-oolong .card-art            { background-color: #004a99; }
+
+/* Herbal — deep purple  (#5a2d82 on white = 9.8:1) */
+.suit-herbal .card-corner,
+.suit-herbal .card-corner-bottom { color: #5a2d82; }
+.suit-herbal .card-art            { background-color: #5a2d82; }
+
+/* White Tea — dark gold  (#7a5c00 on white = 6.3:1) */
+.suit-white .card-corner,
+.suit-white .card-corner-bottom  { color: #7a5c00; }
+.suit-white .card-art             { background-color: #7a5c00; }
+
+/* Joker — turtle green */
+.suit-joker .card-corner,
+.suit-joker .card-corner-bottom  { color: #2d6a4f; }
+.suit-joker .card-art             { background-color: #2d6a4f; }

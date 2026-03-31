@@ -1,0 +1,227 @@
+/* ── Product Landing Page ────────────────────────────── */
+
+/* Full-width main for hero breakout */
+main {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* ── Hero ────────────────────────────────────────────── */
+/* #0a3158 background + white text = 13.2:1 */
+.hero {
+    background-color: #0a3158;
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    color: #ffffff;
+    border-left: none;
+    padding-left: 0;
+    font-size: 2.4rem;
+    margin: 0 0 16px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 580px;
+    margin: 0 auto 32px;
+    color: #e0eaff;
+}
+
+/* CTA button: white bg, #0a3158 text = 13.2:1 */
+.hero-cta {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #0a3158;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    padding: 14px 38px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.hero-cta:hover {
+    background-color: #dceeff;
+    text-decoration: none;
+}
+
+/* ── Features ────────────────────────────────────────── */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin: 20px 0 10px;
+}
+
+.feature {
+    text-align: center;
+    padding: 24px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.feature-icon {
+    font-size: 2.8rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.feature h3 {
+    color: #0056b3;
+    margin: 0 0 8px;
+    font-size: 1rem;
+}
+
+.feature p {
+    font-size: 0.9rem;
+    color: #333333;
+    margin: 0;
+}
+
+/* ── Product showcase ────────────────────────────────── */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 20px 0 10px;
+}
+
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* #0056b3 background, white emoji = decorative, no contrast req */
+.product-card-img {
+    background-color: #0056b3;
+    padding: 28px 10px;
+    font-size: 2.8rem;
+}
+
+.product-card-body {
+    padding: 14px 12px;
+}
+
+.product-card-body h3 {
+    font-size: 0.95rem;
+    color: #333333;
+    margin: 0 0 6px;
+}
+
+/* #0056b3 on white = 7.0:1 */
+.product-card-body .price {
+    color: #0056b3;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+/* ── Video ───────────────────────────────────────────── */
+.video-section {
+    text-align: center;
+}
+
+.video-section h2 {
+    text-align: left;
+}
+
+#video {
+    width: 100%;
+    max-width: 640px;
+    height: 360px;
+    border: none;
+    margin-top: 16px;
+    border-radius: 4px;
+}
+
+/* ── Sign-up ─────────────────────────────────────────── */
+.signup-section {
+    background-color: #f0f6ff;
+    border: 2px solid #0056b3;
+    border-radius: 8px;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.signup-section h2 {
+    border-left: none;
+    padding-left: 0;
+    color: #0056b3;
+}
+
+#form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Border #767676 on white = 4.5:1 (non-text UI boundary) */
+#email {
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 1px solid #767676;
+    border-radius: 4px;
+    width: 280px;
+    font-family: 'Source Sans 3', sans-serif;
+    color: #333333;
+}
+
+/* white on #0056b3 = 7.0:1 */
+#submit {
+    padding: 12px 28px;
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: #003d82;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 720px) {
+    .features-grid,
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    #form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #email {
+        width: 100%;
+        max-width: 340px;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-grid,
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}

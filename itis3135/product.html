@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miraculous Turtle Tea Co. | Ancient Tea for Modern Life</title>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/product.css">
+</head>
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <!-- Hero — full-width, outside page-container -->
+    <section class="hero">
+        <h2>Ancient Wisdom. Modern Cup.</h2>
+        <p>
+            The Miraculous Turtle has been perfecting these teas since the Cretaceous Period.
+            Five hundred years of patience, distilled into every brew.
+        </p>
+        <a href="#signup" class="hero-cta">Join the Shell Club</a>
+    </section>
+
+    <div class="page-container">
+
+        <!-- Features -->
+        <section aria-labelledby="features-heading">
+            <h2 id="features-heading">Why Brew with the Turtle?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <span class="feature-icon" aria-hidden="true">&#128034;</span>
+                    <h3>500 Years of Practice</h3>
+                    <p>No other tea company has been perfecting the brew since the Cretaceous Period. Quality takes time.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon" aria-hidden="true">&#127807;</span>
+                    <h3>Ethically Sourced</h3>
+                    <p>Every leaf is hand-selected by the Turtle himself during his centuries of globe-trotting.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon" aria-hidden="true">&#128218;</span>
+                    <h3>Manuscript-Guided</h3>
+                    <p>Every blend is informed by the Turtle's private library of 10 ancient brewing manuscripts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product showcase -->
+        <section aria-labelledby="products-heading">
+            <h2 id="products-heading">Our Signature Collection</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-card-img" aria-hidden="true">&#127807;</div>
+                    <div class="product-card-body">
+                        <h3>Primordial Sencha</h3>
+                        <p class="price">$24 / 50 g</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" aria-hidden="true">&#9829;</div>
+                    <div class="product-card-body">
+                        <h3>Midnight Earl Grey</h3>
+                        <p class="price">$18 / 50 g</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" aria-hidden="true">&#9830;</div>
+                    <div class="product-card-body">
+                        <h3>Dragon Well Oolong</h3>
+                        <p class="price">$32 / 50 g</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" aria-hidden="true">&#127804;</div>
+                    <div class="product-card-body">
+                        <h3>Wild Chamomile</h3>
+                        <p class="price">$14 / 50 g</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" aria-hidden="true">&#9824;</div>
+                    <div class="product-card-body">
+                        <h3>Silver Needle White</h3>
+                        <p class="price">$42 / 50 g</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" aria-hidden="true">&#128034;</div>
+                    <div class="product-card-body">
+                        <h3>Turtle's Reserve Blend</h3>
+                        <p class="price">$60 / 50 g</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video -->
+        <section class="video-section" aria-labelledby="video-heading">
+            <h2 id="video-heading">The Turtle's Inspiration</h2>
+            <p>
+                Just as Bubba Gump could enumerate every variety of shrimp, the Miraculous Turtle
+                can speak endlessly on the varieties of tea. This timeless scene captures the spirit
+                of our catalog philosophy perfectly.
+            </p>
+            <div class="video-wrapper">
+                <iframe
+                    id="video"
+                    src="https://www.youtube.com/embed/H1nA1wanH2s?start=45"
+                    title="Forrest Gump shrimp varieties scene — the inspiration for the Turtle's tea catalog"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Sign-up / CTA -->
+        <section class="signup-section" id="signup" aria-labelledby="signup-heading">
+            <h2 id="signup-heading">Join the Shell Club</h2>
+            <p>
+                Receive monthly tea recommendations, early access to rare manuscripts,
+                and wisdom from an entity older than most mountain ranges.
+                No spam — only tea.
+            </p>
+            <form id="form" action="#" method="post">
+                <label for="email" class="sr-only">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required>
+                <input type="submit" id="submit" value="Brew Me In">
+            </form>
+        </section>
+
+    </div><!-- .page-container -->
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="scripts/HTMLInclude.min.js"></script>
+    <script>
+        HTMLInclude();
+    </script>
+
+</body>
+</html>

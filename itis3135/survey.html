@@ -2,20 +2,186 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Miraculous Turtle ~ ITIS 3135 | Survey</title>
+    <title>Miraculous Turtle Tea Co. | Shell Club Survey</title>
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/survey.css">
 </head>
 <body>
 
     <div data-include="components/header.html"></div>
 
     <main>
-        <h2>Survey</h2>
-        <p>Content coming soon.</p>
+        <h1 id="title">Shell Club Membership Survey</h1>
+        <p id="description">
+            The Miraculous Turtle has been collecting teas and wisdom since the Cretaceous Period.
+            Complete this survey to join the <strong>Shell Club</strong> — our inner circle of tea enthusiasts.
+            Fields marked <abbr title="required">*</abbr> are required.
+        </p>
+
+        <form id="survey-form" action="#" method="post">
+
+            <!-- About You -->
+            <fieldset>
+                <legend>About You</legend>
+
+                <div class="form-group">
+                    <label for="name">Full Name <abbr title="required">*</abbr></label>
+                    <input type="text" id="name" name="name" placeholder="e.g. Musie Tilahun" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <abbr title="required">*</abbr></label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="hometown">Hometown / City</label>
+                    <input type="text" id="hometown" name="hometown" placeholder="e.g. Charlotte, NC">
+                </div>
+
+                <div class="form-group">
+                    <label for="number">Age</label>
+                    <input type="number" id="number" name="age" min="13" max="120" placeholder="Your age (13–120)">
+                </div>
+
+                <div class="form-group">
+                    <label for="dropdown">Major or Occupation</label>
+                    <select id="dropdown" name="major">
+                        <option value="" disabled selected>Select your field…</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="it">Information Technology</option>
+                        <option value="ds">Data Science</option>
+                        <option value="design">Web / Graphic Design</option>
+                        <option value="business">Business</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="other">Other / Undeclared</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- Tea Journey -->
+            <fieldset>
+                <legend>Your Tea Journey</legend>
+
+                <div class="form-group">
+                    <p>How would you describe your tea experience?</p>
+                    <label class="check-label">
+                        <input type="radio" name="experience" value="hatchling" required>
+                        Hatchling — I am brand new to tea
+                    </label>
+                    <label class="check-label">
+                        <input type="radio" name="experience" value="wanderer">
+                        Wanderer — I enjoy a cup now and then
+                    </label>
+                    <label class="check-label">
+                        <input type="radio" name="experience" value="elder">
+                        Elder — Tea is a serious pursuit for me
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <p>Which teas interest you? (check all that apply)</p>
+                    <label class="check-label">
+                        <input type="checkbox" name="teas" value="green">
+                        Green Tea
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" name="teas" value="black">
+                        Black Tea
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" name="teas" value="oolong">
+                        Oolong
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" name="teas" value="herbal">
+                        Herbal / Tisanes
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" name="teas" value="white">
+                        White Tea
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" name="teas" value="puerh">
+                        Pu-erh (aged / fermented)
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Web Dev Background -->
+            <fieldset>
+                <legend>Your Web Development Background</legend>
+
+                <div class="form-group">
+                    <p>How would you rate your web development experience?</p>
+                    <label class="check-label">
+                        <input type="radio" name="webexp" value="none" required>
+                        None — I am just starting out
+                    </label>
+                    <label class="check-label">
+                        <input type="radio" name="webexp" value="some">
+                        Some — I have made a page or two
+                    </label>
+                    <label class="check-label">
+                        <input type="radio" name="webexp" value="comfortable">
+                        Comfortable — I can build functional sites
+                    </label>
+                    <label class="check-label">
+                        <input type="radio" name="webexp" value="professional">
+                        Professional — I have done this for work
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <p>What topics interest you most? (check all that apply)</p>
+                    <label class="check-label">
+                        <input type="checkbox" name="interests" value="html">
+                        HTML &amp; CSS
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" name="interests" value="js">
+                        JavaScript
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" name="interests" value="ux">
+                        UX / Visual Design
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" name="interests" value="backend">
+                        Back-end / Databases
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Tell the Turtle More -->
+            <fieldset>
+                <legend>Tell the Turtle More</legend>
+
+                <div class="form-group">
+                    <label for="comments">
+                        Introduce yourself — what should the Ancient Turtle know about you?
+                    </label>
+                    <textarea id="comments" name="comments" rows="5"
+                        placeholder="Hobbies, goals, favourite snack, or anything you would like to share…"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="check-label">
+                        <input type="checkbox" name="newsletter" value="yes">
+                        Sign me up for the Miraculous Turtle Tea Co. newsletter
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <input type="submit" id="submit" value="Join the Shell Club">
+            </div>
+
+        </form>
     </main>
 
     <div data-include="components/footer.html"></div>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" role="img" aria-label="Miraculous Turtle logo">
+  <title>Miraculous Turtle</title>
+  <!-- Shell -->
+  <ellipse cx="50" cy="44" rx="28" ry="20" fill="#2d6a4f"/>
+  <ellipse cx="50" cy="44" rx="20" ry="14" fill="#52b788"/>
+  <!-- Shell pattern -->
+  <ellipse cx="50" cy="38" rx="6" ry="4" fill="#2d6a4f" opacity="0.5"/>
+  <ellipse cx="41" cy="47" rx="5" ry="3.5" fill="#2d6a4f" opacity="0.5"/>
+  <ellipse cx="59" cy="47" rx="5" ry="3.5" fill="#2d6a4f" opacity="0.5"/>
+  <!-- Head -->
+  <circle cx="78" cy="42" r="11" fill="#2d6a4f"/>
+  <!-- Eye -->
+  <circle cx="82" cy="38" r="3" fill="white"/>
+  <circle cx="83" cy="38" r="1.5" fill="#1a1a1a"/>
+  <!-- Tea cup on head -->
+  <rect x="74" y="28" width="10" height="7" rx="1" fill="#c9a96e"/>
+  <path d="M72 28 Q79 25 86 28" stroke="#c9a96e" stroke-width="1.5" fill="none"/>
+  <!-- Steam -->
+  <path d="M77 26 Q78 22 77 18" stroke="#aaaaaa" stroke-width="1" fill="none"/>
+  <path d="M80 25 Q81 21 80 17" stroke="#aaaaaa" stroke-width="1" fill="none"/>
+  <!-- Legs -->
+  <ellipse cx="34" cy="60" rx="8" ry="4.5" fill="#2d6a4f" transform="rotate(-20 34 60)"/>
+  <ellipse cx="66" cy="60" rx="8" ry="4.5" fill="#2d6a4f" transform="rotate(20 66 60)"/>
+  <ellipse cx="34" cy="28" rx="8" ry="4.5" fill="#2d6a4f" transform="rotate(20 34 28)"/>
+  <ellipse cx="66" cy="28" rx="8" ry="4.5" fill="#2d6a4f" transform="rotate(-20 66 28)"/>
+  <!-- Tail -->
+  <ellipse cx="22" cy="46" rx="8" ry="4" fill="#2d6a4f" transform="rotate(-5 22 46)"/>
+</svg>

@@ -1,0 +1,73 @@
+/* ── Book Inventory ──────────────────────────────────── */
+
+.inventory-intro {
+    margin-bottom: 32px;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.93rem;
+}
+
+.inventory-table caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333333;
+    text-align: left;
+    padding: 0 0 10px;
+}
+
+/* Header row: white text on #0056b3 = 7.0:1 */
+.inventory-table th {
+    background-color: #0056b3;
+    color: #ffffff;
+    padding: 12px 14px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.inventory-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333333;
+    vertical-align: top;
+}
+
+.inventory-table tbody tr:nth-child(even) td {
+    background-color: #f8f9fa;
+}
+
+.inventory-table tbody tr:hover td {
+    background-color: #e8f0fb;
+}
+
+/* Status badges — all contrast-verified */
+/* #1a5c38 on white = 8.0:1 */
+.status-available {
+    color: #1a5c38;
+    font-weight: 700;
+}
+
+/* #856404 on white = 5.5:1 */
+.status-rare {
+    color: #856404;
+    font-weight: 700;
+}
+
+/* #721c24 on white = 11.0:1 */
+.status-loaned {
+    color: #721c24;
+    font-weight: 700;
+}
+
+.era-tag {
+    font-size: 0.8rem;
+    color: #595959;
+    display: block;
+    margin-top: 2px;
+}
