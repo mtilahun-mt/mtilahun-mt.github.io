@@ -1,4 +1,5 @@
-/* ── Playing Cards ───────────────────────────────────── */
+@charset "UTF-8";
+/* Playing Cards */
 
 .cards-intro {
     text-align: center;
@@ -89,7 +90,7 @@
     transform: rotate(180deg);
 }
 
-/* ── Suit colour themes ────────────────────────────── */
+/* Suit colour themes */
 
 /* Green Tea — forest green  (#1a5c38 on white = 8.0:1) */
 .suit-green .card-corner,

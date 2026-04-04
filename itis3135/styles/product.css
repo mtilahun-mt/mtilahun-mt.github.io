@@ -1,4 +1,5 @@
-/* ── Product Landing Page ────────────────────────────── */
+@charset "UTF-8";
+/* Product Landing Page */
 
 /* Full-width main for hero breakout */
 main {
@@ -13,7 +14,7 @@ main {
     padding: 50px 20px;
 }
 
-/* ── Hero ────────────────────────────────────────────── */
+/* Hero */
 /* #0a3158 background + white text = 13.2:1 */
 .hero {
     background-color: #0a3158;
@@ -55,7 +56,7 @@ main {
     text-decoration: none;
 }
 
-/* ── Features ────────────────────────────────────────── */
+/* Features */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -88,7 +89,7 @@ main {
     margin: 0;
 }
 
-/* ── Product showcase ────────────────────────────────── */
+/* Product showcase */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -128,7 +129,7 @@ main {
     margin: 0;
 }
 
-/* ── Video ───────────────────────────────────────────── */
+/* Video */
 .video-section {
     text-align: center;
 }
@@ -146,7 +147,7 @@ main {
     border-radius: 4px;
 }
 
-/* ── Sign-up ─────────────────────────────────────────── */
+/* Sign-up */
 .signup-section {
     background-color: #f0f6ff;
     border: 2px solid #0056b3;
@@ -197,7 +198,7 @@ main {
     background-color: #003d82;
 }
 
-/* ── Responsive ──────────────────────────────────────── */
+/* Responsive */
 @media (max-width: 720px) {
     .features-grid,
     .products-grid {
