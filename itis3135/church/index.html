@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankise Miheret Bata Lemariam — Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/church.css">
+</head>
+<body>
+
+    <header id="site-header">
+        <p class="church-title-en">Ankise Miheret Bata Lemariam</p>
+        <p class="church-title-am">አንቂሰ ምሕረት ቤተ ሌማርያም</p>
+        <p class="church-title-sub">Ethiopian Orthodox Tewahedo Church &mdash; Charlotte, NC</p>
+    </header>
+
+    <nav class="church-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero" aria-labelledby="hero-heading">
+        <h2 id="hero-heading">Welcome to Our Sacred Community</h2>
+        <p>
+            A congregation rooted in over 1,600 years of unbroken faith &mdash; bringing the
+            Ethiopian Orthodox Tewahedo tradition to the Charlotte community.
+        </p>
+        <a href="services.html" class="btn btn-primary">Service Schedule</a>
+        <a href="about.html" class="btn btn-outline">Learn More</a>
+    </section>
+
+    <!-- Holiday Countdown Timer -->
+    <div id="countdown-holder">
+        <section class="countdown-section" aria-label="Countdown to next holiday">
+            <h2>Next Ethiopian Orthodox Holiday</h2>
+            <p class="countdown-label" id="countdown-holiday-name">Loading&hellip;</p>
+            <div class="countdown-timer">
+                <div class="countdown-unit">
+                    <span class="number" id="cd-days" aria-live="polite">--</span>
+                    <span class="unit-label">Days</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="number" id="cd-hours" aria-live="polite">--</span>
+                    <span class="unit-label">Hours</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="number" id="cd-minutes" aria-live="polite">--</span>
+                    <span class="unit-label">Minutes</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="number" id="cd-seconds" aria-live="polite">--</span>
+                    <span class="unit-label">Seconds</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Feature Cards -->
+    <main id="main-content">
+        <section aria-labelledby="life-heading">
+            <div class="section-heading">
+                <h2 id="life-heading">Life at Our Church</h2>
+                <span class="divider"></span>
+            </div>
+
+            <div class="cards-grid">
+                <article class="card">
+                    <span class="card-icon" aria-hidden="true">☩</span>
+                    <h3>Sunday Liturgy</h3>
+                    <p>
+                        Join us every Sunday at 7:00&nbsp;AM for the Holy Qidase (Divine Liturgy)
+                        celebrated in Ge&apos;ez and Amharic, following the ancient rites of the
+                        Ethiopian Orthodox Tewahedo tradition.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <span class="card-icon" aria-hidden="true">🤝</span>
+                    <h3>Community</h3>
+                    <p>
+                        Our congregation is a spiritual home for Ethiopian Orthodox families and a
+                        welcoming gathering place for anyone seeking to learn about our rich faith
+                        and cultural heritage.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <span class="card-icon" aria-hidden="true">📖</span>
+                    <h3>Roots of the Faith</h3>
+                    <p>
+                        The Ethiopian Orthodox Tewahedo Church traces its origins to the 4th century
+                        &mdash; one of the world&apos;s oldest Christian traditions, with a continuous,
+                        unbroken lineage of faith and Scripture.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Quick Info Strip -->
+    <div class="quick-info" role="region" aria-label="Quick church information">
+        <div class="quick-info-item">
+            <span class="qi-label">Phone</span>
+            <span class="qi-value">(980) 758-1851</span>
+        </div>
+        <div class="quick-info-item">
+            <span class="qi-label">Location</span>
+            <span class="qi-value">Charlotte, NC</span>
+        </div>
+        <div class="quick-info-item">
+            <span class="qi-label">Sunday Liturgy</span>
+            <span class="qi-value">7:00 AM</span>
+        </div>
+        <div class="quick-info-item">
+            <span class="qi-label">Sunday School</span>
+            <span class="qi-value">11:30 AM</span>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-tagline">☩ ወልደ እግዚአብሔር &mdash; Son of God ☩</p>
+        <p>Ankise Miheret Bata Lemariam Ethiopian Orthodox Tewahedo Church &mdash; Charlotte, NC</p>
+        <p>
+            <a href="tel:+19807581851">(980) 758-1851</a> &nbsp;|&nbsp;
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="scripts/church.js"></script>
+</body>
+</html>

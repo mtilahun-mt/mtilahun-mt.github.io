@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankise Miheret Bata Lemariam — Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/church.css">
+</head>
+<body>
+
+    <header id="site-header">
+        <p class="church-title-en">Ankise Miheret Bata Lemariam</p>
+        <p class="church-title-am">አንቂሰ ምሕረት ቤተ ሌማርያም</p>
+        <p class="church-title-sub">Ethiopian Orthodox Tewahedo Church &mdash; Charlotte, NC</p>
+    </header>
+
+    <nav class="church-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="page-banner">
+        <h2>Gallery</h2>
+        <p>Photos from Our Services, Holidays, and Community Events</p>
+    </div>
+
+    <main id="main-content">
+
+        <section aria-labelledby="gallery-heading">
+            <div class="section-heading">
+                <h2 id="gallery-heading">Our Community in Photos</h2>
+                <span class="divider"></span>
+            </div>
+            <p>
+                Use the filter buttons to browse by category. Click any photo to view it
+                full-size. Press <kbd>Esc</kbd> or click outside the photo to close.
+            </p>
+
+            <!-- Filter Buttons -->
+            <div class="gallery-filters" role="group" aria-label="Filter photos by category">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="liturgy">Liturgy</button>
+                <button class="filter-btn" data-filter="holidays">Holidays</button>
+                <button class="filter-btn" data-filter="community">Community</button>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="gallery-grid">
+
+                <!-- Liturgy -->
+                <div class="gallery-item" data-category="liturgy" role="button" tabindex="0"
+                     aria-label="Open photo: Sunday Qidase — Morning Liturgy">
+                    <img src="https://picsum.photos/seed/liturgy-qidase/600/450"
+                         alt="Sunday Qidase — Morning Liturgy service">
+                    <div class="gallery-caption">Sunday Qidase — Morning Liturgy</div>
+                </div>
+
+                <div class="gallery-item" data-category="liturgy" role="button" tabindex="0"
+                     aria-label="Open photo: Deacons Preparing the Altar">
+                    <img src="https://picsum.photos/seed/liturgy-altar/600/450"
+                         alt="Deacons preparing the altar before the liturgy">
+                    <div class="gallery-caption">Deacons Preparing the Altar</div>
+                </div>
+
+                <div class="gallery-item" data-category="liturgy" role="button" tabindex="0"
+                     aria-label="Open photo: Reading of the Holy Gospel">
+                    <img src="https://picsum.photos/seed/liturgy-gospel/600/450"
+                         alt="Reading of the Holy Gospel during the Qidase">
+                    <div class="gallery-caption">Reading of the Holy Gospel</div>
+                </div>
+
+                <!-- Holidays -->
+                <div class="gallery-item" data-category="holidays" role="button" tabindex="0"
+                     aria-label="Open photo: Timkat Procession">
+                    <img src="https://picsum.photos/seed/holiday-timkat/600/450"
+                         alt="Timkat Epiphany procession with the Tabot">
+                    <div class="gallery-caption">Timkat — Epiphany Procession</div>
+                </div>
+
+                <div class="gallery-item" data-category="holidays" role="button" tabindex="0"
+                     aria-label="Open photo: Meskel Damera Bonfire">
+                    <img src="https://picsum.photos/seed/holiday-meskel/600/450"
+                         alt="Meskel Damera bonfire celebration">
+                    <div class="gallery-caption">Meskel — Damera Bonfire</div>
+                </div>
+
+                <div class="gallery-item" data-category="holidays" role="button" tabindex="0"
+                     aria-label="Open photo: Enkutatash New Year Celebration">
+                    <img src="https://picsum.photos/seed/holiday-enkutatash/600/450"
+                         alt="Enkutatash Ethiopian New Year celebration with Adey Abeba flowers">
+                    <div class="gallery-caption">Enkutatash — Ethiopian New Year</div>
+                </div>
+
+                <!-- Community -->
+                <div class="gallery-item" data-category="community" role="button" tabindex="0"
+                     aria-label="Open photo: Sunday School Children">
+                    <img src="https://picsum.photos/seed/community-school/600/450"
+                         alt="Children at Sunday School">
+                    <div class="gallery-caption">Sunday School — Timhirt Bet</div>
+                </div>
+
+                <div class="gallery-item" data-category="community" role="button" tabindex="0"
+                     aria-label="Open photo: Community Fellowship Gathering">
+                    <img src="https://picsum.photos/seed/community-mahiber/600/450"
+                         alt="Community fellowship gathering after the liturgy">
+                    <div class="gallery-caption">Community Fellowship — Mahiber</div>
+                </div>
+
+                <div class="gallery-item" data-category="community" role="button" tabindex="0"
+                     aria-label="Open photo: Youth Group">
+                    <img src="https://picsum.photos/seed/community-youth/600/450"
+                         alt="Youth group members at a community event">
+                    <div class="gallery-caption">Youth Group Gathering</div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button id="lightbox-close" aria-label="Close photo viewer">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <span id="lightbox-caption"></span>
+    </div>
+
+    <footer>
+        <p class="footer-tagline">☩ ወልደ እግዚአብሔር &mdash; Son of God ☩</p>
+        <p>Ankise Miheret Bata Lemariam Ethiopian Orthodox Tewahedo Church &mdash; Charlotte, NC</p>
+        <p>
+            <a href="tel:+19807581851">(980) 758-1851</a> &nbsp;|&nbsp;
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="scripts/church.js"></script>
+</body>
+</html>

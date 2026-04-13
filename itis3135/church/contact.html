@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankise Miheret Bata Lemariam — Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/church.css">
+</head>
+<body>
+
+    <header id="site-header">
+        <p class="church-title-en">Ankise Miheret Bata Lemariam</p>
+        <p class="church-title-am">አንቂሰ ምሕረት ቤተ ሌማርያም</p>
+        <p class="church-title-sub">Ethiopian Orthodox Tewahedo Church &mdash; Charlotte, NC</p>
+    </header>
+
+    <nav class="church-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="page-banner">
+        <h2>Contact Us</h2>
+        <p>We would love to hear from you</p>
+    </div>
+
+    <main id="main-content">
+
+        <section aria-labelledby="contact-heading">
+            <div class="section-heading">
+                <h2 id="contact-heading">Get in Touch</h2>
+                <span class="divider"></span>
+            </div>
+
+            <div class="contact-grid">
+
+                <!-- Left column: church info -->
+                <div>
+                    <div class="contact-info-item">
+                        <span class="ci-icon" aria-hidden="true">📞</span>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+19807581851">(980) 758-1851</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="ci-icon" aria-hidden="true">📍</span>
+                        <div>
+                            <h4>Location</h4>
+                            <p>3912 N Sharon Amity Rd, Charlotte, NC 28205</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="ci-icon" aria-hidden="true">🕘</span>
+                        <div>
+                            <h4>Sunday Liturgy</h4>
+                            <p>Every Sunday &mdash; 7:00 AM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="ci-icon" aria-hidden="true">🕖</span>
+                        <div>
+                            <h4>Wednesday Prayer</h4>
+                            <p>Every Wednesday &mdash; 7:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="ci-icon" aria-hidden="true">✉</span>
+                        <div>
+                            <h4>Deacon Contact</h4>
+                            <p>Yoseph Duresso<br>
+                               <a href="mailto:yduresso@charlotte.edu">yduresso@charlotte.edu</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <blockquote class="scripture-quote">
+                        &ldquo;Ask, and it shall be given you; seek, and ye shall find; knock,
+                        and it shall be opened unto you.&rdquo;
+                        <span class="amharic">
+                            ጠይቁ፤ ይሰጣችኋልና፤ ፈልጉ፤ ታገኛላችሁና፤ መቱ፤ ይከፈትላችኋልና።
+                        </span>
+                        <cite>&mdash; Matthew 7:7</cite>
+                    </blockquote>
+                </div>
+
+                <!-- Right column: contact form -->
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+
+                    <form id="contact-form" novalidate>
+
+                        <div class="form-group" id="group-name">
+                            <label for="input-name">Full Name <span aria-hidden="true">*</span></label>
+                            <input type="text" id="input-name" name="name"
+                                   placeholder="Your full name" autocomplete="name">
+                            <span class="form-error" role="alert"></span>
+                        </div>
+
+                        <div class="form-group" id="group-email">
+                            <label for="input-email">Email Address <span aria-hidden="true">*</span></label>
+                            <input type="email" id="input-email" name="email"
+                                   placeholder="you@example.com" autocomplete="email">
+                            <span class="form-error" role="alert"></span>
+                        </div>
+
+                        <div class="form-group" id="group-phone">
+                            <label for="input-phone">Phone <span style="font-weight:400; color:#888;">(optional)</span></label>
+                            <input type="tel" id="input-phone" name="phone"
+                                   placeholder="(555) 000-0000" autocomplete="tel">
+                        </div>
+
+                        <div class="form-group" id="group-subject">
+                            <label for="input-subject">Subject <span aria-hidden="true">*</span></label>
+                            <select id="input-subject" name="subject">
+                                <option value="">-- Please select --</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="membership">Membership / Joining</option>
+                                <option value="prayer">Prayer Request</option>
+                                <option value="schedule">Service Schedule</option>
+                                <option value="event">Event Information</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="form-error" role="alert"></span>
+                        </div>
+
+                        <div class="form-group" id="group-message">
+                            <label for="input-message">Message <span aria-hidden="true">*</span></label>
+                            <textarea id="input-message" name="message"
+                                      placeholder="Write your message here (minimum 10 characters)&hellip;"></textarea>
+                            <span class="form-error" role="alert"></span>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Send Message</button>
+
+                    </form>
+
+                    <!-- Success message (hidden until valid submission) -->
+                    <div id="form-success" role="status">
+                        <span class="success-icon" aria-hidden="true">✅</span>
+                        <h3>Message Sent!</h3>
+                        <p>
+                            Thank you for reaching out. We will get back to you as soon as possible.
+                            May God bless you.
+                        </p>
+                        <p style="color: #C8942A; font-style: italic;">ይቅርታ አምላካቸው ይስጥልን</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p class="footer-tagline">☩ ወልደ እግዚአብሔር &mdash; Son of God ☩</p>
+        <p>Ankise Miheret Bata Lemariam Ethiopian Orthodox Tewahedo Church &mdash; Charlotte, NC</p>
+        <p>
+            <a href="tel:+19807581851">(980) 758-1851</a> &nbsp;|&nbsp;
+            <a href="mailto:yduresso@charlotte.edu">yduresso@charlotte.edu</a>
+        </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="scripts/church.js"></script>
+</body>
+</html>

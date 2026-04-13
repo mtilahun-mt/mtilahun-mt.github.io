@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankise Miheret Bata Lemariam — Services &amp; Schedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="styles/church.css">
+</head>
+<body>
+
+    <header id="site-header">
+        <p class="church-title-en">Ankise Miheret Bata Lemariam</p>
+        <p class="church-title-am">አንቂሰ ምሕረት ቤተ ሌማርያም</p>
+        <p class="church-title-sub">Ethiopian Orthodox Tewahedo Church &mdash; Charlotte, NC</p>
+    </header>
+
+    <nav class="church-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="page-banner">
+        <h2>Services &amp; Schedule</h2>
+        <p>Weekly Services and Major Ethiopian Orthodox Holidays</p>
+    </div>
+
+    <main id="main-content">
+
+        <!-- Weekly Service Schedule -->
+        <section aria-labelledby="schedule-heading">
+            <div class="section-heading">
+                <h2 id="schedule-heading">Weekly Service Schedule</h2>
+                <span class="divider"></span>
+            </div>
+            <p>Hover over any row for a brief description of that service.</p>
+
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Service</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Language</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr title="The Holy Qidase (Divine Liturgy) lasts approximately 3 hours. Celebrated in Ge'ez and Amharic. All are welcome to attend.">
+                        <td>Sunday Liturgy (Qidase)</td>
+                        <td>Every Sunday</td>
+                        <td>7:00 AM</td>
+                        <td>Ge&apos;ez / Amharic</td>
+                    </tr>
+                    <tr title="Sunday School (Timhirt Bet) for children and adults — teachings drawn from scripture and church tradition, offered in Amharic and English.">
+                        <td>Sunday School (Timhirt Bet)</td>
+                        <td>Every Sunday</td>
+                        <td>11:30 AM</td>
+                        <td>Amharic / English</td>
+                    </tr>
+                    <tr title="Midweek prayer service dedicated to Our Lady Mary. Approximately 1 hour. Open to all members.">
+                        <td>Wednesday Prayer (Senbete)</td>
+                        <td>Every Wednesday</td>
+                        <td>7:00 PM</td>
+                        <td>Ge&apos;ez / Amharic</td>
+                    </tr>
+                    <tr title="Full Holy Communion liturgy celebrated on the first Sunday of each month, beginning one hour earlier than the regular Sunday Qidase.">
+                        <td>Monthly Full Qidase</td>
+                        <td>1st Sunday</td>
+                        <td>8:00 AM</td>
+                        <td>Ge&apos;ez</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Holiday Accordion -->
+        <section aria-labelledby="holidays-heading">
+            <div class="section-heading">
+                <h2 id="holidays-heading">Major Ethiopian Orthodox Holidays</h2>
+                <span class="divider"></span>
+            </div>
+            <p>Click a holiday name to expand its description.</p>
+
+            <div class="accordion" role="list">
+
+                <div class="accordion-item" role="listitem">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="acc-gena">
+                        Gena &mdash; Ethiopian Christmas (ገና) <span class="arrow" aria-hidden="true">▶</span>
+                    </button>
+                    <div class="accordion-body" id="acc-gena">
+                        <div class="holiday-meta">
+                            <span>Amharic: ገና</span>
+                            <span>Date: January 7</span>
+                        </div>
+                        <p>
+                            Gena celebrates the Nativity of Jesus Christ. Unlike Western traditions, Gena is
+                            observed with solemnity rather than gift-giving. The celebration begins with an
+                            all-night vigil on January&nbsp;6, with the main liturgy on January&nbsp;7. Men
+                            and boys traditionally play a stick game also called <em>gena</em>, believed to
+                            have been played by shepherds on the very night of the Nativity.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" role="listitem">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="acc-timkat">
+                        Timkat &mdash; Ethiopian Epiphany (ጥምቀት) <span class="arrow" aria-hidden="true">▶</span>
+                    </button>
+                    <div class="accordion-body" id="acc-timkat">
+                        <div class="holiday-meta">
+                            <span>Amharic: ጥምቀት</span>
+                            <span>Date: January 19</span>
+                        </div>
+                        <p>
+                            Timkat celebrates the Epiphany &mdash; the baptism of Jesus Christ in the Jordan
+                            River. It is the most colorful and joyful holiday in the Ethiopian Orthodox calendar.
+                            The <em>Tabot</em> (replica of the Ark of the Covenant) is carried in solemn
+                            procession to a body of water, where the faithful renew their baptismal vows.
+                            Priests wear elaborate ceremonial robes and the celebration continues for three days.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" role="listitem">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="acc-fasika">
+                        Fasika &mdash; Ethiopian Easter (ፋሲካ) <span class="arrow" aria-hidden="true">▶</span>
+                    </button>
+                    <div class="accordion-body" id="acc-fasika">
+                        <div class="holiday-meta">
+                            <span>Amharic: ፋሲካ</span>
+                            <span>Date: Varies (spring)</span>
+                        </div>
+                        <p>
+                            Fasika is the celebration of the Resurrection of Jesus Christ and is the holiest
+                            day in the Ethiopian Orthodox calendar. It is preceded by the 55-day Lenten fast
+                            (<em>Abiy Tsom</em>) during which no animal products are consumed. The celebration
+                            begins after midnight with the breaking of the fast, joyful hymns, and a great
+                            feast. Traditional dishes include <em>doro wat</em> (spiced chicken stew) and
+                            freshly baked injera bread.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" role="listitem">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="acc-enkutatash">
+                        Enkutatash &mdash; Ethiopian New Year (እንቁጣጣሽ) <span class="arrow" aria-hidden="true">▶</span>
+                    </button>
+                    <div class="accordion-body" id="acc-enkutatash">
+                        <div class="holiday-meta">
+                            <span>Amharic: እንቁጣጣሽ</span>
+                            <span>Date: September 11</span>
+                        </div>
+                        <p>
+                            Enkutatash marks the Ethiopian New Year, which falls at the end of the rainy
+                            season when the highlands bloom with yellow Adey Abeba flowers. Children carry
+                            bouquets of these flowers and sing traditional songs from house to house.
+                            The name means &ldquo;gift of jewels,&rdquo; referring to the legend that the
+                            Queen of Sheba received jewels upon her return from Jerusalem. A special liturgy
+                            is held and families gather for a traditional feast.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" role="listitem">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="acc-meskel">
+                        Meskel &mdash; Finding of the True Cross (መስቀል) <span class="arrow" aria-hidden="true">▶</span>
+                    </button>
+                    <div class="accordion-body" id="acc-meskel">
+                        <div class="holiday-meta">
+                            <span>Amharic: መስቀል</span>
+                            <span>Date: September 27</span>
+                        </div>
+                        <p>
+                            Meskel commemorates the discovery of the True Cross by Empress Helena in the
+                            4th&nbsp;century. Ethiopian tradition holds that a large portion of the True
+                            Cross was brought to Ethiopia and is preserved at Gishen Mariam monastery. The
+                            celebration is marked by the lighting of a great bonfire called <em>Damera</em>,
+                            around which priests and the faithful dance. It is one of the most visually
+                            spectacular celebrations in the Ethiopian calendar.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" role="listitem">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="acc-lideta">
+                        Lideta &mdash; Birth of the Virgin Mary (ልደታ) <span class="arrow" aria-hidden="true">▶</span>
+                    </button>
+                    <div class="accordion-body" id="acc-lideta">
+                        <div class="holiday-meta">
+                            <span>Amharic: ልደታ</span>
+                            <span>Date: August 30 (Nehase 19)</span>
+                        </div>
+                        <p>
+                            Lideta celebrates the birth of the Virgin Mary, who holds a uniquely exalted
+                            position in Ethiopian Orthodox theology. Our own congregation &mdash;
+                            <em>Bata Lemariam</em> (House of Mary) &mdash; is dedicated to her. The day is
+                            observed with special liturgy, fasting, and prayers in her honor. The
+                            21st&nbsp;of every Ethiopian month is also dedicated to the Virgin Mary.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" role="listitem">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="acc-kidane">
+                        Kidane Mehret &mdash; Covenant of Mercy (ኪዳነ ምሕረት) <span class="arrow" aria-hidden="true">▶</span>
+                    </button>
+                    <div class="accordion-body" id="acc-kidane">
+                        <div class="holiday-meta">
+                            <span>Amharic: ኪዳነ ምሕረት</span>
+                            <span>Date: February 16 (Yekatit 9)</span>
+                        </div>
+                        <p>
+                            Kidane Mehret commemorates the covenant (<em>Kidane</em>) made between the
+                            Virgin Mary and Christ before His Ascension, in which He promised mercy to all
+                            who honor her. This feast is especially significant in our tradition and is one
+                            of the major feasts of the Virgin Mary. Churches dedicated in her name celebrate
+                            it with particular solemnity.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" role="listitem">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="acc-buhe">
+                        Buhe &mdash; Transfiguration of Christ (ቡሄ) <span class="arrow" aria-hidden="true">▶</span>
+                    </button>
+                    <div class="accordion-body" id="acc-buhe">
+                        <div class="holiday-meta">
+                            <span>Amharic: ቡሄ</span>
+                            <span>Date: August 19 (Nehase 13)</span>
+                        </div>
+                        <p>
+                            Buhe celebrates the Transfiguration of Jesus Christ on Mount Tabor. The night
+                            before Buhe, young boys light torches, sing traditional songs
+                            (<em>Hoya Hoye</em>), and go from house to house collecting bread. Large bonfires
+                            are lit to symbolize the divine light that shone at the Transfiguration. A
+                            special liturgy is held and the faithful break a fasting period with the
+                            traditional <em>Dabo</em> (ceremonial bread).
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p class="footer-tagline">☩ ወልደ እግዚአብሔር &mdash; Son of God ☩</p>
+        <p>Ankise Miheret Bata Lemariam Ethiopian Orthodox Tewahedo Church &mdash; Charlotte, NC</p>
+        <p>
+            <a href="tel:+19807581851">(980) 758-1851</a> &nbsp;|&nbsp;
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+            integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+            crossorigin="anonymous"></script>
+    <script src="scripts/church.js"></script>
+</body>
+</html>
