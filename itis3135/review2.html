@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miraculous Turtle ~ ITIS 3135 | Peer Review 2 — Murrieta</title>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/reviews.css">
+</head>
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <main>
+        <h2>Peer Review 2</h2>
+
+        <div class="review-meta">
+            <p><strong>Reviewer:</strong> Musie Tilahun</p>
+            <p><strong>Reviewee:</strong> Murrieta, Joseph (Alberto)</p>
+            <p><strong>Site reviewed:</strong> Joseph Murrieta's Jumbo Mastodon | ITIS 3135</p>
+            <p><strong>Date:</strong> April 2026</p>
+        </div>
+
+        <figure class="site-screenshot">
+            <img src="images/Joseph.png"
+                 alt="Screenshot of Joseph Murrieta's Jumbo Mastodon ITIS 3135 website homepage">
+            <figcaption>
+                <a href="https://webpages.charlotte.edu/amurrie2/itis3135/" target="_blank" rel="noopener">
+                    https://webpages.charlotte.edu/amurrie2/itis3135/
+                </a>
+            </figcaption>
+        </figure>
+
+        <!-- File Management -->
+        <section class="review-section">
+            <h3 class="review-heading">File Management</h3>
+
+            <div class="checklist-item">
+                <strong>No spaces / No uppercase:</strong> All file names (index.html,
+                introduction.html, contract.html) are lowercase with no spaces — good.
+            </div>
+        </section>
+
+        <!-- Validation -->
+        <section class="review-section">
+            <h3 class="review-heading">HTML/CSS Validation</h3>
+
+            <div class="checklist-item">
+                The Accumulus widget shows green on the pages I checked, which is a great sign. Worth
+                confirming with a direct W3C validator run, but it looks like you're passing.
+            </div>
+        </section>
+
+        <!-- Design Standards -->
+        <section class="review-section">
+            <h3 class="review-heading">Design Standards</h3>
+
+            <div class="checklist-item">
+                <strong>Don't underline non-links:</strong> Looks clean.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Brand everything:</strong> This is the area that needs the most attention.
+                The site title and home page H1 say "Joseph Murrieta's Jumbo Mastodon," but the
+                Introduction and Contract pages switch to "Alberto Murrieta's Ancient Mastodon." Pick
+                one brand name (and one first name presentation) and use it consistently across every
+                page, header, and <code>&lt;title&gt;</code>.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Link to external files:</strong> Excellent — separate CSS files per page
+                (introduction.css, contract.css) linked externally rather than embedded.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Clean up images:</strong> The introduction photo is appropriately sized and
+                has a caption — well done.
+            </div>
+        </section>
+
+        <!-- Page Structure -->
+        <section class="review-section">
+            <h3 class="review-heading">Page Structure Checklist</h3>
+
+            <div class="checklist-item">
+                <strong>Header / Main / Footer:</strong> All three semantic elements are present and
+                used correctly. Bonus points for <code>aria-label="Primary"</code> on the nav and
+                <code>aria-current="page"</code> on the active link — that's beyond the requirements
+                and great for accessibility.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Header contents:</strong> Site/brand H1 is present, but the required
+                "Student Name &#42; Course ID Course Name" line isn't in the header in the standard
+                format. The course ID does appear in the brand line, which is close but not quite the spec.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Main:</strong> Page name is properly used as H2 (e.g., "Course Home Page,"
+                "Introduction," "Contract") — exactly right. Unique content per page — good.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Footer requirements:</strong> This is the main checklist gap — the footer is
+                missing the HTML validation button/link and the CSS validation button/link. The
+                "Designed by&#8230;" requirement is partially met by "Page built by Murrieta Software
+                &#169;" on the introduction/contract pages (nice touch), but the home page footer
+                doesn't have it. Also, the home page footer has fewer links than the
+                introduction/contract footers — the footer should be the same across the whole site
+                (Repetition principle).
+            </div>
+        </section>
+
+        <!-- CRAP / Contrast -->
+        <section class="review-section">
+            <h3 class="review-heading">Design Requirements (CRAP, Contrast, Fonts)</h3>
+
+            <div class="checklist-item">
+                <strong>Sufficient contrast:</strong> Good — the dark text on cream background and
+                the gold/green palette read comfortably.
+            </div>
+
+            <div class="checklist-item">
+                <strong>CRAP principles:</strong> Strong on the Introduction and Contract pages
+                (consistent palette, good alignment, nice typography). The home page, however, is
+                essentially unstyled (default browser look) which breaks Repetition badly. Apply your
+                shared site styles to index.html too.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Standard CSS:</strong> Good use of external stylesheets and standard properties.
+            </div>
+        </section>
+
+        <!-- Required Pages -->
+        <section class="review-section">
+            <h3 class="review-heading">Required Pages</h3>
+
+            <div class="checklist-item">
+                <strong>Home (index):</strong> Present but very minimal — just an H2 and one sentence.
+                Worth fleshing out and styling to match the rest of the site.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Introduction page:</strong> Excellent — has a photo with caption, plus H3
+                sections for Personal Background, Professional Background, Academic Background,
+                Background in This Course, Primary Computer Platform, Courses I am Taking, a
+                Funny/Interesting item, and a Quote. This hits all the introduction requirements.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Contract page:</strong> Present and properly worded — but says "Fall 2026,
+                ITIS 3135" while the course is actually Spring 2026. Quick fix.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Topic/Client Project pages:</strong> I noticed footer links to "Hobby" on some
+                pages but couldn't find a corresponding Hobby/topic site in the navigation. If a topic
+                site is required and it exists somewhere, it should be linked from the main nav.
+            </div>
+        </section>
+
+        <!-- Coding Standards -->
+        <section class="review-section">
+            <h3 class="review-heading">Coding Standards</h3>
+
+            <div class="checklist-item">
+                <strong>Indentation / semantic HTML / accessibility:</strong> Very clean — proper use
+                of <code>&lt;ul&gt;</code> for nav, ARIA attributes, alt text on the personal photo.
+                This is the strongest part of the submission.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Comments:</strong> Couldn't tell from the rendered page; if your sections
+                aren't commented, add some section headers in the source.
+            </div>
+        </section>
+
+        <!-- The Good / Bad / Ugly -->
+        <section class="review-section">
+            <h3 class="review-heading">The Good / The Bad / The Ugly</h3>
+
+            <div class="checklist-item">
+                <strong>The Good:</strong> Clean semantic HTML with thoughtful ARIA usage; nicely
+                styled and well-organized Introduction page; good external CSS architecture; readable
+                typography and pleasant color palette on the styled pages; nice personal touches like
+                the tagline ("Never tell me the odds.") and the &#169; branding.
+            </div>
+
+            <div class="checklist-item">
+                <strong>The Bad:</strong> Inconsistent name/brand across pages (Joseph vs. Alberto,
+                Jumbo vs. Ancient Mastodon); home page is unstyled and sparse compared to the rest of
+                the site; footer differs across pages (breaks Repetition); contract says Fall 2026
+                instead of Spring 2026.
+            </div>
+
+            <div class="checklist-item">
+                <strong>The Ugly:</strong> Missing HTML and CSS validator links/buttons in the footer
+                — this is an explicit checklist requirement on every page. Also, no clearly linked
+                topic/hobby site from the main nav.
+            </div>
+        </section>
+
+        <!-- Stop / Start / Continue -->
+        <section class="review-section">
+            <h3 class="review-heading">Stop / Start / Continue</h3>
+            <div class="ssc-grid">
+                <div class="ssc-box ssc-stop">
+                    <h4 class="ssc-stop-heading">Stop</h4>
+                    <ul>
+                        <li>Using two different brand names and first names across pages</li>
+                        <li>Shipping the contract page with the wrong semester ("Fall 2026")</li>
+                    </ul>
+                </div>
+                <div class="ssc-box ssc-start">
+                    <h4 class="ssc-start-heading">Start</h4>
+                    <ul>
+                        <li>Adding HTML and CSS validator buttons/links to every page footer</li>
+                        <li>Applying your shared styles to the home page so it matches the rest of the site</li>
+                        <li>Standardizing the footer across all pages</li>
+                        <li>Linking the hobby/topic site from the main nav</li>
+                    </ul>
+                </div>
+                <div class="ssc-box ssc-continue">
+                    <h4 class="ssc-continue-heading">Continue</h4>
+                    <ul>
+                        <li>Using semantic HTML5 elements with bonus ARIA attributes</li>
+                        <li>Linking external CSS files per page</li>
+                        <li>The warm, personal tone of the Introduction page</li>
+                        <li>The clean, readable color palette</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="overall-summary">
+            <h3 class="overall-heading">Overall Assessment</h3>
+            <p>
+                When the styling shows up (Introduction and Contract pages), this is one of the more
+                polished sites in the class — you clearly know your HTML/CSS. The biggest wins from
+                here are quick: settle on one brand name everywhere, push the same styling to the home
+                page, add the validator buttons to the footer, and standardize the footer across all
+                pages. Great work — keep it up!
+            </p>
+        </div>
+
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="scripts/HTMLInclude.min.js"></script>
+    <script>
+        HTMLInclude();
+    </script>
+
+</body>
+</html>

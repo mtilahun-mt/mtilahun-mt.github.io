@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/* Peer Review pages */
+
+.review-meta {
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #0056b3;
+}
+
+.review-meta p {
+    margin: 4px 0;
+    font-size: 1rem;
+}
+
+/* Screenshot figure */
+.site-screenshot {
+    text-align: center;
+    margin: 0 0 36px;
+}
+
+.site-screenshot img {
+    max-width: 100%;
+    width: 600px;
+    box-sizing: border-box;
+    border: 2px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.site-screenshot figcaption {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #595959;
+}
+
+.site-screenshot figcaption a {
+    color: #0056b3;
+    font-weight: 600;
+}
+
+/* Section headings */
+.review-section {
+    margin-top: 40px;
+}
+
+.review-heading {
+    color: #0056b3;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+}
+
+/* Individual checklist items */
+.checklist-item {
+    margin-bottom: 14px;
+    padding-left: 16px;
+    border-left: 3px solid #e0e0e0;
+}
+
+.checklist-item strong {
+    color: #333333;
+}
+
+.ssc-grid {
+    margin-top: 16px;
+}
+
+.ssc-box {
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 6px;
+    padding: 16px 18px;
+    width: 29%;
+    min-width: 180px;
+    margin: 0 1% 16px;
+    box-sizing: border-box;
+}
+
+/* #721c24 on #fff4f4 = 10.5:1 */
+.ssc-stop {
+    background-color: #fff4f4;
+    border: 1px solid #f5c2c7;
+}
+
+.ssc-stop-heading {
+    color: #721c24;
+    margin: 0 0 10px;
+}
+
+/* #856404 on #fffbee = 6.0:1 */
+.ssc-start {
+    background-color: #fffbee;
+    border: 1px solid #fde89a;
+}
+
+.ssc-start-heading {
+    color: #856404;
+    margin: 0 0 10px;
+}
+
+/* #1a5c38 on #f0fff6 = 8.8:1 */
+.ssc-continue {
+    background-color: #f0fff6;
+    border: 1px solid #b7eacb;
+}
+
+.ssc-continue-heading {
+    color: #1a5c38;
+    margin: 0 0 10px;
+}
+
+.ssc-box ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.ssc-box li {
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+    color: #333333;
+}
+
+/* Overall summary callout */
+.overall-summary {
+    background-color: #f0f6ff;
+    border-left: 5px solid #0056b3;
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin-top: 36px;
+}
+
+.overall-heading {
+    color: #0056b3;
+    margin: 0 0 10px;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .ssc-box {
+        display: block;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

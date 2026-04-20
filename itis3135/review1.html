@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miraculous Turtle ~ ITIS 3135 | Peer Review 1 — Kuykendall</title>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/reviews.css">
+</head>
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <main>
+        <h2>Peer Review 1</h2>
+
+        <div class="review-meta">
+            <p><strong>Reviewer:</strong> Musie Tilahun</p>
+            <p><strong>Reviewee:</strong> Kuykendall, Mason</p>
+            <p><strong>Site reviewed:</strong> Mason Kuykendall's Marvelous Kestrel ~ ITIS 3135</p>
+            <p><strong>Date:</strong> April 2026</p>
+        </div>
+
+        <figure class="site-screenshot">
+            <img src="images/Mason.png"
+                 alt="Screenshot of Mason Kuykendall's Marvelous Kestrel ITIS 3135 website homepage">
+            <figcaption>
+                <a href="https://webpages.charlotte.edu/mkuyken2/itis3135/" target="_blank" rel="noopener">
+                    https://webpages.charlotte.edu/mkuyken2/itis3135/
+                </a>
+            </figcaption>
+        </figure>
+
+        <!-- File Management -->
+        <section class="review-section">
+            <h3 class="review-heading">File Management</h3>
+
+            <div class="checklist-item">
+                <strong>No spaces / No uppercase:</strong> Mostly good with index.html, contract.html,
+                and the hobby/ folder, but the "CRAPpy page" link points to a file with uppercase letters
+                (e.g., CRAP.htm). File names should be all lowercase with no uppercase characters per
+                the checklist.
+            </div>
+
+            <div class="checklist-item">
+                <strong>File extensions:</strong> The CRAPpy link uses .htm instead of the standard
+                .html. Recommend renaming for consistency.
+            </div>
+        </section>
+
+        <!-- Validation -->
+        <section class="review-section">
+            <h3 class="review-heading">HTML/CSS Validation</h3>
+
+            <div class="checklist-item">
+                The Accumulus floater on the home page is reporting "HTML: 1 errors." Per the checklist,
+                all pages must validate with no errors or warnings — please run the page through the W3C
+                validator and clean it up.
+            </div>
+        </section>
+
+        <!-- Design Standards -->
+        <section class="review-section">
+            <h3 class="review-heading">Design Standards</h3>
+
+            <div class="checklist-item">
+                <strong>Don't underline non-links / Proper button styling:</strong> Looks fine;
+                underlines are limited to actual anchor links.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Brand everything (consistent branding):</strong> The site brand "Marvelous Kestrel"
+                appears in the header on the main pages, but the hobby sub-site swaps to "Book Binding" as
+                the H1 and uses a totally different visual style — there's no consistent brand thread
+                carrying across. The page <code>&lt;title&gt;</code> on the hobby page is also just
+                "Hobbies" rather than including the site brand and page name.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Link to external files:</strong> Good — CSS is linked externally via the
+                Accumulus stylesheet.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Clean up images:</strong> The selfie on the About Me section appears to be
+                displayed at native phone-camera resolution; consider resizing the actual image file
+                rather than letting the browser/CSS scale it.
+            </div>
+        </section>
+
+        <!-- Page Structure -->
+        <section class="review-section">
+            <h3 class="review-heading">Page Structure Checklist</h3>
+
+            <div class="checklist-item">
+                <strong>Header / Main / Footer semantic elements:</strong> Present on the main
+                pages — good use of <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+                <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Header contents:</strong> The site/brand H1 is there, but the required
+                "Student Name &#42; Course ID Course Name" line is not present in the header.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Main:</strong> The home page's <code>&lt;main&gt;</code> only contains an H2
+                of "Home" and nothing else — there's no actual content on the landing page, which feels
+                empty for a graded site.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Footer requirements:</strong> This is the biggest issue — the footer is missing
+                the "Designed by&#8230;" text, the HTML validation button/link, and the CSS validation
+                button/link. The nav menu in the footer is also not present (only external profile
+                links). All four are required by the checklist.
+            </div>
+        </section>
+
+        <!-- CRAP / Contrast -->
+        <section class="review-section">
+            <h3 class="review-heading">Design Requirements (CRAP, Contrast, Fonts)</h3>
+
+            <div class="checklist-item">
+                <strong>Sufficient contrast:</strong> The hobby page has a serious contrast problem —
+                the dull-yellow text on the orange-red background is very hard to read (failing WCAG AA
+                in several spots). I'd recommend darkening the text or lightening/changing the background.
+            </div>
+
+            <div class="checklist-item">
+                <strong>CRAP principles:</strong> Repetition is inconsistent between the main site
+                (default browser styles, blue underlined links) and the hobby site (heavily styled).
+                The two halves don't feel like one site.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Site colors and fonts using standard CSS:</strong> OK on the hobby page, but
+                the main site is essentially unstyled — adding a shared stylesheet would help with
+                Repetition and overall polish.
+            </div>
+        </section>
+
+        <!-- Required Pages -->
+        <section class="review-section">
+            <h3 class="review-heading">Required Pages</h3>
+
+            <div class="checklist-item">
+                <strong>Home (index):</strong> Present, but very sparse — basically just navigation.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Introduction page:</strong> I couldn't find a dedicated Introduction page in
+                the navigation. This is a required standard page and should include the introduction content.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Contract page:</strong> Present and properly worded.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Topic/Hobby site:</strong> Present at /hobby/ with multiple sections — nice job
+                using <code>:target</code> to swap sections; that's a creative technique.
+            </div>
+        </section>
+
+        <!-- Coding Standards -->
+        <section class="review-section">
+            <h3 class="review-heading">Coding Standards</h3>
+
+            <div class="checklist-item">
+                <strong>Indentation / Comments:</strong> Code I could see looks reasonably clean,
+                but the validator errors should be cleaned up.
+            </div>
+
+            <div class="checklist-item">
+                <strong>Accessibility / alt text:</strong> The Accumulus widget images have empty alts
+                (those are external — not your fault), but be sure all of your own
+                <code>&lt;img&gt;</code> tags have meaningful alt attributes.
+            </div>
+        </section>
+
+        <!-- Stop / Start / Continue -->
+        <section class="review-section">
+            <h3 class="review-heading">Stop / Start / Continue</h3>
+            <div class="ssc-grid">
+                <div class="ssc-box ssc-stop">
+                    <h4 class="ssc-stop-heading">Stop</h4>
+                    <ul>
+                        <li>Using uppercase letters and .htm for the CRAPpy page filename</li>
+                        <li>Letting the page ship with HTML validation errors</li>
+                        <li>Using low-contrast color combos on the hobby page</li>
+                    </ul>
+                </div>
+                <div class="ssc-box ssc-start">
+                    <h4 class="ssc-start-heading">Start</h4>
+                    <ul>
+                        <li>Adding the required footer items ("Designed by&#8230;", HTML and CSS validator buttons, footer nav)</li>
+                        <li>Building out a dedicated Introduction page</li>
+                        <li>Carrying a consistent brand/style across the main site and the hobby sub-site</li>
+                    </ul>
+                </div>
+                <div class="ssc-box ssc-continue">
+                    <h4 class="ssc-continue-heading">Continue</h4>
+                    <ul>
+                        <li>Using semantic HTML5 elements (header/nav/main/footer)</li>
+                        <li>The creative <code>:target</code>-based section navigation on the hobby page</li>
+                        <li>The personal photo and warm tone in the About Me section</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="overall-summary">
+            <h3 class="overall-heading">Overall Assessment</h3>
+            <p>
+                The bones are here and the hobby section shows real personality, but the home page needs
+                content, the footer is missing required elements, and the validation errors and contrast
+                issues need to be addressed before this is checklist-complete. Keep going — you're close!
+            </p>
+        </div>
+
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="scripts/HTMLInclude.min.js"></script>
+    <script>
+        HTMLInclude();
+    </script>
+
+</body>
+</html>
