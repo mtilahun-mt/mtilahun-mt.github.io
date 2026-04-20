@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miraculous Turtle ~ ITIS 3135 | Introduction Form</title>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/default.css">
+    <style>
+        .form-section {
+            margin-bottom: 2rem;
+            padding: 1.4rem 1.6rem;
+            border: 1px solid #ddd;
+            border-left: 5px solid #0056b3;
+            border-radius: 4px;
+            background: #fafafa;
+        }
+        .form-section h3 {
+            margin-top: 0;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 200px;
+        }
+        .form-group.full {
+            flex: 1 1 100%;
+        }
+        label {
+            font-weight: 600;
+            font-size: 0.88rem;
+            margin-bottom: 4px;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="url"],
+        input[type="file"],
+        textarea,
+        select {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.93rem;
+            background: #fff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #0056b3;
+            box-shadow: 0 0 0 3px rgba(0,86,179,0.15);
+        }
+        /* Validation error state */
+        .field-error {
+            border-color: #c0392b !important;
+        }
+        .error-msg {
+            color: #c0392b;
+            font-size: 0.8rem;
+            margin-top: 3px;
+        }
+        /* Image preview */
+        #img-preview {
+            max-width: 160px;
+            border-radius: 6px;
+            border: 2px solid #ccc;
+            margin-bottom: 8px;
+            display: block;
+        }
+        /* Course rows */
+        .course-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .course-row .course-num {
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: #0056b3;
+            min-width: 60px;
+        }
+        .course-row input {
+            flex: 1 1 130px;
+        }
+        .delete-course-btn {
+            background: #c0392b;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+        .delete-course-btn:hover { background: #922b21; }
+        #add-course-btn {
+            background: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            margin-top: 8px;
+        }
+        #add-course-btn:hover { background: #004494; }
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .btn-row button {
+            padding: 11px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="submit"]  { background: #0056b3; color: #fff; }
+        button[type="submit"]:hover  { background: #004494; }
+        button[type="reset"]   { background: #6c757d; color: #fff; }
+        button[type="reset"]:hover   { background: #545b62; }
+        button.clear-btn       { background: #fff; color: #0056b3; border: 2px solid #0056b3; }
+        button.clear-btn:hover { background: #e8f0fb; }
+        /* Output area */
+        #output-container { display: none; }
+        .out-intro {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .out-intro figure { margin: 0; }
+        .out-ack {
+            background: #e8f0fb;
+            border-left: 4px solid #0056b3;
+            padding: 10px 14px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .out-bullets { line-height: 1.9; }
+        .out-quote {
+            background: #fafafa;
+            border-left: 5px solid #0056b3;
+            padding: 14px 20px;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+        .out-quote cite { display: block; font-style: normal; font-size: 0.9rem; color: #555; margin-top: 6px; }
+        .out-links { list-style: none; padding: 0; }
+        .out-links li { margin-bottom: 6px; }
+        .reset-link {
+            display: inline-block;
+            padding: 10px 24px;
+            background: #0056b3;
+            color: #fff;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .reset-link:hover { background: #004494; text-decoration: none; color: #fff; }
+        .optional-label {
+            font-weight: 400;
+            color: #888;
+            font-size: 0.82rem;
+        }
+    </style>
+</head>
+<body>
+    <div data-include="components/header.html"></div>
+
+    <main>
+        <h2>Introduction Form</h2>
+        <p class="intro-desc">Please submit the form below.</p>
+
+        <!-- ═══════════════ FORM ═══════════════ -->
+        <div id="form-container">
+            <form id="intro-form" novalidate>
+
+                <!-- ── 1. Name ───────────────────────────── -->
+                <div class="form-section">
+                    <h3>Name</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name <span aria-hidden="true">*</span></label>
+                            <input type="text" id="first-name" name="first-name"
+                                   value="Musie" placeholder="First name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="middle-name">Middle Name / Initial
+                                <span class="optional-label">(optional)</span>
+                            </label>
+                            <input type="text" id="middle-name" name="middle-name"
+                                   value="" placeholder="Middle name or initial">
+                        </div>
+                        <div class="form-group">
+                            <label for="nickname">Nickname / Preferred Name
+                                <span class="optional-label">(optional)</span>
+                            </label>
+                            <input type="text" id="nickname" name="nickname"
+                                   value="" placeholder="Nickname or preferred name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name <span aria-hidden="true">*</span></label>
+                            <input type="text" id="last-name" name="last-name"
+                                   value="Tilahun" placeholder="Last name" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 2. Acknowledgement ─────────────────── -->
+                <div class="form-section">
+                    <h3>Acknowledgement</h3>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="ack-statement">Acknowledgement Statement <span aria-hidden="true">*</span></label>
+                            <textarea id="ack-statement" name="ack-statement"
+                                      placeholder="I acknowledge that…" required>I acknowledge that I have read and understand the course syllabus and academic honesty policy for ITIS 3135.</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="ack-date">Acknowledgement Date <span aria-hidden="true">*</span></label>
+                            <input type="date" id="ack-date" name="ack-date"
+                                   value="2026-01-15" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 3. Mascot ──────────────────────────── -->
+                <div class="form-section">
+                    <h3>Mascot</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mascot-adjective">Mascot Adjective <span aria-hidden="true">*</span></label>
+                            <input type="text" id="mascot-adjective" name="mascot-adjective"
+                                   value="Miraculous" placeholder="e.g. Mighty" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mascot-animal">Mascot Animal <span aria-hidden="true">*</span></label>
+                            <input type="text" id="mascot-animal" name="mascot-animal"
+                                   value="Turtle" placeholder="e.g. Turtle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="divider">Divider Character <span aria-hidden="true">*</span></label>
+                            <input type="text" id="divider" name="divider"
+                                   value="~" placeholder="e.g. ~ | ♥" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 4. Picture ──────────────────────────── -->
+                <div class="form-section">
+                    <h3>Picture</h3>
+                    <p style="font-size:0.88rem;color:#555;">Defaults to your introduction photo. Upload a new image to replace it.</p>
+                    <img id="img-preview"
+                         src="https://mtilahun-mt.github.io/images/musie.jpg"
+                         data-default="https://mtilahun-mt.github.io/images/musie.jpg"
+                         alt="Current profile photo preview">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="picture-input">Upload Photo
+                                <span class="optional-label">(optional)</span>
+                            </label>
+                            <input type="file" id="picture-input" name="picture-input" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="pic-caption">Picture Caption <span aria-hidden="true">*</span></label>
+                            <input type="text" id="pic-caption" name="pic-caption"
+                                   value="Musie Tilahun - Student"
+                                   placeholder="Caption for your photo" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 5. Personal Statement ───────────────── -->
+                <div class="form-section">
+                    <h3>Personal Statement</h3>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="personal-statement">Statement <span aria-hidden="true">*</span></label>
+                            <textarea id="personal-statement" name="personal-statement"
+                                      rows="4" required
+                                      placeholder="Write a brief personal introduction…">I'm a sophomore at UNC Charlotte studying Computer Science with a concentration in Cybersecurity. I'm excited to meet new people as well as gain insight into the world of front-end development.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 6. Main Bullets ─────────────────────── -->
+                <div class="form-section">
+                    <h3>Main Bullets</h3>
+
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="bullet-personal">Personal Background <span aria-hidden="true">*</span></label>
+                            <textarea id="bullet-personal" name="bullet-personal"
+                                      rows="2" required
+                                      placeholder="Where you're from, hobbies, interests…">I was born and raised in Ethiopia but lived in Maryland for 6 years before moving to North Carolina in 2022. I love to sing, play piano, and produce music.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="bullet-professional">Professional Background <span aria-hidden="true">*</span></label>
+                            <textarea id="bullet-professional" name="bullet-professional"
+                                      rows="2" required
+                                      placeholder="Work experience, internships…">I was an intern at Brighthouse Financial last summer as a Cybersecurity Governance Analyst.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="bullet-academic">Academic Background <span aria-hidden="true">*</span></label>
+                            <textarea id="bullet-academic" name="bullet-academic"
+                                      rows="2" required
+                                      placeholder="Your academic history…">I'm currently a sophomore at UNC Charlotte studying computer science with a focus in Cybersecurity. I attended 2 high schools but graduated from Providence High School in Charlotte.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="bullet-subject">Background in this Subject <span aria-hidden="true">*</span></label>
+                            <textarea id="bullet-subject" name="bullet-subject"
+                                      rows="2" required
+                                      placeholder="Prior experience with web development, programming…">I've done programming in Java, Python, and C.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="bullet-computer">Primary Work Computer <span aria-hidden="true">*</span></label>
+                            <input type="text" id="bullet-computer" name="bullet-computer"
+                                   value="MacBook Pro with an M3 chip"
+                                   placeholder="Your main computer for this course" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="bullet-backup">Backup Computer &amp; Location Plan <span aria-hidden="true">*</span></label>
+                            <input type="text" id="bullet-backup" name="bullet-backup"
+                                   value="I plan to go to the Atkins Library and get a loaner laptop."
+                                   placeholder="What's your backup plan?" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="bullet-other">Other
+                                <span class="optional-label">(optional)</span>
+                            </label>
+                            <input type="text" id="bullet-other" name="bullet-other"
+                                   value=""
+                                   placeholder="Anything else you'd like to mention…">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 7. Courses ──────────────────────────── -->
+                <div class="form-section" id="courses-section">
+                    <h3>Courses I&rsquo;m Taking &amp; Why</h3>
+                    <p style="font-size:0.88rem;color:#555;">
+                        Fill in the pre-loaded courses or add more with the button below.
+                    </p>
+
+                    <div id="course-list">
+
+                        <div class="course-row">
+                            <span class="course-num">Course 1</span>
+                            <input type="text" class="course-dept"   value="ITIS"  placeholder="Dept">
+                            <input type="text" class="course-number" value="3160"  placeholder="Number">
+                            <input type="text" class="course-name"   value="Database Design and Implementation" placeholder="Course name">
+                            <input type="text" class="course-reason" value="Required course" placeholder="Reason">
+                            <button type="button" class="delete-course-btn">✕ Remove</button>
+                        </div>
+
+                        <div class="course-row">
+                            <span class="course-num">Course 2</span>
+                            <input type="text" class="course-dept"   value="ITSC"  placeholder="Dept">
+                            <input type="text" class="course-number" value="3146"  placeholder="Number">
+                            <input type="text" class="course-name"   value="Intro to Operating Systems and Networks" placeholder="Course name">
+                            <input type="text" class="course-reason" value="Required course" placeholder="Reason">
+                            <button type="button" class="delete-course-btn">✕ Remove</button>
+                        </div>
+
+                        <div class="course-row">
+                            <span class="course-num">Course 3</span>
+                            <input type="text" class="course-dept"   value="CJUS"  placeholder="Dept">
+                            <input type="text" class="course-number" value="1511"  placeholder="Number">
+                            <input type="text" class="course-name"   value="Introduction to Criminal Justice" placeholder="Course name">
+                            <input type="text" class="course-reason" value="Interesting course" placeholder="Reason">
+                            <button type="button" class="delete-course-btn">✕ Remove</button>
+                        </div>
+
+                        <div class="course-row">
+                            <span class="course-num">Course 4</span>
+                            <input type="text" class="course-dept"   value="STAT"  placeholder="Dept">
+                            <input type="text" class="course-number" value="2122"  placeholder="Number">
+                            <input type="text" class="course-name"   value="Intro to Probability &amp; Statistics" placeholder="Course name">
+                            <input type="text" class="course-reason" value="Required course" placeholder="Reason">
+                            <button type="button" class="delete-course-btn">✕ Remove</button>
+                        </div>
+
+                    </div><!-- end #course-list -->
+
+                    <button type="button" id="add-course-btn">+ Add Another Course</button>
+                </div>
+
+                <!-- ── 8. Quote ────────────────────────────── -->
+                <div class="form-section">
+                    <h3>Favorite Quote</h3>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="quote">Quote <span aria-hidden="true">*</span></label>
+                            <textarea id="quote" name="quote" rows="2" required
+                                      placeholder="Your favorite quote…">Long term consistency trumps short-term intensity.</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="quote-author">Author <span aria-hidden="true">*</span></label>
+                            <input type="text" id="quote-author" name="quote-author"
+                                   value="Bruce Lee"
+                                   placeholder="Who said it?" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 9. Optional extras ─────────────────── -->
+                <div class="form-section">
+                    <h3>Optional Extras</h3>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="funny">Funny / Interesting Item to Remember You By
+                                <span class="optional-label">(optional)</span>
+                            </label>
+                            <input type="text" id="funny" name="funny"
+                                   value="I sang the national anthem for my high school graduation."
+                                   placeholder="Something fun or memorable about you">
+                        </div>
+                        <div class="form-group full">
+                            <label for="share">Something I Would Like to Share
+                                <span class="optional-label">(optional)</span>
+                            </label>
+                            <input type="text" id="share" name="share"
+                                   value="I'm bilingual (Amharic)."
+                                   placeholder="Anything else you'd like the class to know">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 10. Links ──────────────────────────── -->
+                <div class="form-section">
+                    <h3>Links (up to 5)</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="link-label-1">Label 1</label>
+                            <input type="text" id="link-label-1" name="link-label-1"
+                                   value="GitHub" placeholder="Label (e.g. LinkedIn)">
+                        </div>
+                        <div class="form-group">
+                            <label for="link-url-1">URL 1</label>
+                            <input type="url" id="link-url-1" name="link-url-1"
+                                   value="https://github.com/mtilahun-mt"
+                                   placeholder="https://…">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="link-label-2">Label 2</label>
+                            <input type="text" id="link-label-2" name="link-label-2"
+                                   value="CLT Web" placeholder="Label">
+                        </div>
+                        <div class="form-group">
+                            <label for="link-url-2">URL 2</label>
+                            <input type="url" id="link-url-2" name="link-url-2"
+                                   value="https://webpages.charlotte.edu/mtilahun"
+                                   placeholder="https://…">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="link-label-3">Label 3</label>
+                            <input type="text" id="link-label-3" name="link-label-3"
+                                   value="GitHub Pages" placeholder="Label">
+                        </div>
+                        <div class="form-group">
+                            <label for="link-url-3">URL 3</label>
+                            <input type="url" id="link-url-3" name="link-url-3"
+                                   value="https://mtilahun-mt.github.io/"
+                                   placeholder="https://…">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="link-label-4">Label 4</label>
+                            <input type="text" id="link-label-4" name="link-label-4"
+                                   value="LinkedIn" placeholder="Label">
+                        </div>
+                        <div class="form-group">
+                            <label for="link-url-4">URL 4</label>
+                            <input type="url" id="link-url-4" name="link-url-4"
+                                   value="https://www.linkedin.com/in/musietilahun"
+                                   placeholder="https://…">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="link-label-5">Label 5
+                                <span class="optional-label">(optional)</span>
+                            </label>
+                            <input type="text" id="link-label-5" name="link-label-5"
+                                   value="freeCodeCamp" placeholder="Label">
+                        </div>
+                        <div class="form-group">
+                            <label for="link-url-5">URL 5
+                                <span class="optional-label">(optional)</span>
+                            </label>
+                            <input type="url" id="link-url-5" name="link-url-5"
+                                   value="https://www.freecodecamp.org/musiet"
+                                   placeholder="https://…">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Buttons ──────────────────────────── -->
+                <div class="btn-row">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                    <button type="button" class="clear-btn">Clear</button>
+                </div>
+
+            </form>
+        </div><!-- end #form-container -->
+
+        <!-- ═══════════════ OUTPUT ═══════════════ -->
+        <div id="output-container"></div>
+
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="components/HTMLInclude.min.js"></script>
+    <script>HTMLInclude();</script>
+    <script src="scripts/introduction.js"></script>
+</body>
+</html>
