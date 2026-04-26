@@ -125,7 +125,7 @@ $(function () {
     /* ------------------------------------------------------------------ */
     /* 6. Gallery: Category Filters & Lightbox (gallery.html)             */
     /* ------------------------------------------------------------------ */
-    if ($('.gallery-grid').length) {
+    if ($('.gallery-layout').length) {
 
         /* --- Filter buttons --- */
         $('.filter-btn').on('click', function () {
