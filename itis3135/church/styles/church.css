@@ -894,6 +894,27 @@ footer a:hover {
     font-size: 1.0rem;
 }
 
+.footer-validation {
+    margin-top: 14px;
+    font-size: 0.78rem;
+}
+
+.footer-validation a {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    color: var(--gold-lt);
+    text-decoration: none;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.footer-validation a:hover {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    text-decoration: none;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 800px) {
     .about-intro > *,

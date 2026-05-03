@@ -8,13 +8,28 @@
 $(function () {
 
     /* ------------------------------------------------------------------ */
-    /* 1. Mark active nav link based on current page filename              */
+    /* 1. Load shared components                                           */
     /* ------------------------------------------------------------------ */
+    $('#site-header').load('components/header.html');
+
     var currentPage = location.pathname.split('/').pop() || 'index.html';
-    $('nav.church-nav a').each(function () {
-        if ($(this).attr('href') === currentPage) {
-            $(this).addClass('active');
-        }
+
+    $('#site-nav').load('components/nav.html', function () {
+        $('#site-nav a').each(function () {
+            if ($(this).attr('href') === currentPage) {
+                $(this).addClass('active');
+            }
+        });
+    });
+
+    var liveBase = 'https://mtilahun-mt.github.io/itis3135/church/' + currentPage;
+    $('#site-footer').load('components/footer.html', function () {
+        $('#footer-html-valid').attr('href',
+            'https://validator.w3.org/check?uri=' + encodeURIComponent(liveBase));
+        $('#footer-css-valid').attr('href',
+            'https://jigsaw.w3.org/css-validator/validator?uri=' + encodeURIComponent(liveBase));
+        $('#footer-wcag').attr('href',
+            'https://wave.webaim.org/report#/' + liveBase);
     });
 
 
