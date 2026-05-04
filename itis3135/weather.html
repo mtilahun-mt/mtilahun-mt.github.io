@@ -8,6 +8,85 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/default.css">
+    <style>
+        #weather-app {
+            display: flex;
+            gap: 32px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        #controls { flex: 1; min-width: 240px; }
+        .field-row { margin-bottom: 18px; }
+        .field-row label {
+            display: block;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 6px;
+        }
+        .field-row select,
+        .field-row input[type="number"] {
+            width: 100%;
+            padding: 9px 10px;
+            font-size: 1rem;
+            font-family: 'Source Sans 3', sans-serif;
+            border: 2px solid #767676;
+            border-radius: 4px;
+            color: #333333;
+            box-sizing: border-box;
+            background: #ffffff;
+        }
+        .field-row select:focus,
+        .field-row input[type="number"]:focus { outline: 3px solid #0056b3; border-color: #0056b3; }
+        #temp-slider {
+            width: 100%;
+            margin-top: 6px;
+            accent-color: #0056b3;
+        }
+        #temp-readout {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #0056b3;
+            font-weight: 700;
+            margin-top: 4px;
+            display: block;
+        }
+        #recommend-btn {
+            width: 100%;
+            padding: 11px;
+            background: #0056b3;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+        #recommend-btn:hover  { background: #003d80; }
+        #recommend-btn:focus  { outline: 3px solid #003d80; outline-offset: 2px; }
+        #result-panel {
+            flex: 1.4;
+            min-width: 260px;
+            display: none;
+        }
+        .rec-card {
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            padding: 22px 24px;
+            background: #f0f5ff;
+        }
+        .rec-icon  { font-size: 2.8rem; display: block; margin-bottom: 8px; }
+        .rec-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: #0056b3;
+            margin: 0 0 10px;
+        }
+        .rec-detail { color: #333333; line-height: 1.75; margin: 0; }
+        .rec-detail strong { color: #003d80; }
+    </style>
 </head>
 <body>
 
@@ -15,6 +94,38 @@
 
     <main>
         <h2>Steep by the Weather</h2>
+        <p>Tell the Miraculous Turtle the current conditions and receive a personalised tea recommendation.</p>
+
+        <div id="weather-app">
+
+            <div id="controls">
+                <div class="field-row">
+                    <label for="temp-slider">Temperature: <span id="temp-readout">70 &deg;F</span></label>
+                    <input type="range" id="temp-slider" min="0" max="110" value="70" step="1">
+                </div>
+                <div class="field-row">
+                    <label for="condition-select">Weather Condition</label>
+                    <select id="condition-select">
+                        <option value="sunny">Sunny</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="snowy">Snowy</option>
+                        <option value="foggy">Foggy</option>
+                        <option value="windy">Windy</option>
+                    </select>
+                </div>
+                <button id="recommend-btn">Get My Tea</button>
+            </div>
+
+            <div id="result-panel" aria-live="polite">
+                <div class="rec-card">
+                    <span class="rec-icon" id="rec-icon"></span>
+                    <p class="rec-title" id="rec-name"></p>
+                    <p class="rec-detail" id="rec-detail"></p>
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <div data-include="components/footer.html"></div>
@@ -22,6 +133,98 @@
     <script src="scripts/HTMLInclude.min.js"></script>
     <script>
         HTMLInclude();
+
+        var slider    = document.getElementById('temp-slider');
+        var readout   = document.getElementById('temp-readout');
+        var condSel   = document.getElementById('condition-select');
+        var recBtn    = document.getElementById('recommend-btn');
+        var panel     = document.getElementById('result-panel');
+        var recIcon   = document.getElementById('rec-icon');
+        var recName   = document.getElementById('rec-name');
+        var recDetail = document.getElementById('rec-detail');
+
+        slider.addEventListener('input', function() {
+            readout.innerHTML = slider.value + ' &deg;F';
+        });
+
+        /* Each entry: [minTemp, maxTemp, conditions[], name, icon, detail] */
+        var RECS = [
+            [0, 30, ['snowy', 'cloudy', 'windy'],
+                'Ancient Pu-erh',
+                '🐢',
+                '<strong>Steep:</strong> 95 °C &bull; <strong>Time:</strong> 4&ndash;5 min<br>' +
+                'Bold, earthy warmth for the coldest days. Rinse the leaves once before the first steep to awaken the aged flavours.' ],
+
+            [0, 45, ['rainy', 'foggy'],
+                'Spiced Masala Chai',
+                '🌧️',
+                '<strong>Steep:</strong> 95 °C &bull; <strong>Time:</strong> 5 min + simmer with milk<br>' +
+                'Ginger, cardamom, and clove drive away the chill. Perfect for a rainy afternoon by the window.' ],
+
+            [0, 50, ['snowy', 'windy'],
+                'Golden Tips Black Tea',
+                '❄️',
+                '<strong>Steep:</strong> 95 °C &bull; <strong>Time:</strong> 3&ndash;4 min<br>' +
+                'Full-bodied malty warmth. A dash of honey deepens the golden sweetness on a cold, windy day.' ],
+
+            [40, 65, ['cloudy', 'foggy', 'rainy'],
+                'Midnight Oolong',
+                '☁️',
+                '<strong>Steep:</strong> 85 °C &bull; <strong>Time:</strong> 2&ndash;3 min<br>' +
+                'Roasted oolong bridges the gap between seasons — earthy with a faint floral finish, perfect for overcast skies.' ],
+
+            [50, 75, ['sunny', 'cloudy', 'windy'],
+                'Jade Mist Green Tea',
+                '🌿',
+                '<strong>Steep:</strong> 75 °C &bull; <strong>Time:</strong> 2&ndash;3 min<br>' +
+                'Grassy, sweet, and clean. Never use boiling water — a turtle never rushes a green tea.' ],
+
+            [60, 80, ['sunny', 'cloudy'],
+                'Silver Needle White Tea',
+                '🌸',
+                '<strong>Steep:</strong> 80 °C &bull; <strong>Time:</strong> 3&ndash;5 min<br>' +
+                'Delicate floral notes and honey sweetness. A gentle tea for mild, pleasant days.' ],
+
+            [78, 110, ['sunny'],
+                'Cold-Brew Jasmine Pearls',
+                '☀️',
+                '<strong>Method:</strong> Cold-brew 8&ndash;12 hrs in the refrigerator<br>' +
+                'Smooth, fragrant, and refreshing. Serve over ice — the turtle’s favourite on a hot summer day.' ],
+
+            [70, 110, ['rainy', 'cloudy'],
+                'Crimson Hibiscus Iced Tea',
+                '🌺',
+                '<strong>Steep:</strong> 95 °C &bull; <strong>Time:</strong> 5 min &mdash; then chill<br>' +
+                'Tart and vibrant ruby red. Sweeten lightly and serve cold — bright enough to rival the overcast sky.' ]
+        ];
+
+        function recommend() {
+            var temp  = parseInt(slider.value, 10);
+            var cond  = condSel.value;
+
+            /* Score: exact condition match scores higher, temp range match required */
+            var best = null;
+            var bestScore = -1;
+
+            RECS.forEach(function(r) {
+                var minT = r[0], maxT = r[1], conds = r[2];
+                if (temp < minT || temp > maxT) { return; }
+                var score = conds.indexOf(cond) >= 0 ? 2 : 1;
+                if (score > bestScore) { bestScore = score; best = r; }
+            });
+
+            if (!best) {
+                /* fallback */
+                best = RECS[4];
+            }
+
+            recIcon.textContent   = best[4];
+            recName.textContent   = best[3];
+            recDetail.innerHTML   = best[5];
+            panel.style.display   = 'block';
+        }
+
+        recBtn.addEventListener('click', recommend);
     </script>
 
 </body>

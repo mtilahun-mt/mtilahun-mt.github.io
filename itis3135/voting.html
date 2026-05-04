@@ -8,6 +8,77 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/default.css">
+    <style>
+        #vote-app { margin-top: 24px; }
+        .tea-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            background: #f9f9f9;
+            flex-wrap: wrap;
+        }
+        .tea-name {
+            flex: 1;
+            min-width: 160px;
+            font-weight: 600;
+            color: #333333;
+        }
+        .bar-wrap {
+            flex: 2;
+            min-width: 120px;
+            background: #d8d8d8;
+            border-radius: 4px;
+            height: 18px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: #0056b3;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+        .vote-count {
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            color: #595959;
+            min-width: 72px;
+            text-align: right;
+        }
+        .vote-btn {
+            background: #0056b3;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 18px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .vote-btn:hover  { background: #003d80; }
+        .vote-btn:focus  { outline: 3px solid #003d80; outline-offset: 2px; }
+        #total-line { color: #595959; font-size: 0.9rem; margin-top: 4px; }
+        #reset-btn {
+            margin-top: 18px;
+            background: none;
+            color: #b30000;
+            border: 2px solid #b30000;
+            border-radius: 4px;
+            padding: 8px 18px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        #reset-btn:hover  { background: #b30000; color: #ffffff; }
+        #reset-btn:focus  { outline: 3px solid #b30000; outline-offset: 2px; }
+    </style>
 </head>
 <body>
 
@@ -15,6 +86,10 @@
 
     <main>
         <h2>Tea Blend Vote</h2>
+        <p>Vote for your favorite Miraculous Turtle Tea Co. blend. Results are saved between visits.</p>
+        <div id="vote-app" aria-live="polite"></div>
+        <p id="total-line"></p>
+        <button id="reset-btn">Reset All Votes</button>
     </main>
 
     <div data-include="components/footer.html"></div>
@@ -22,6 +97,91 @@
     <script src="scripts/HTMLInclude.min.js"></script>
     <script>
         HTMLInclude();
+
+        var TEAS = [
+            'Jade Mist Green Tea',
+            'Midnight Oolong',
+            'Golden Tips Black Tea',
+            'Silver Needle White Tea',
+            'Ancient Pu-erh',
+            'Crimson Hibiscus Bloom'
+        ];
+
+        var STORAGE_KEY = 'turtle-tea-votes-v1';
+
+        function loadVotes() {
+            try {
+                var stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                if (Array.isArray(stored) && stored.length === TEAS.length) { return stored; }
+            } catch (e) { /* ignore parse errors */ }
+            return TEAS.map(function() { return 0; });
+        }
+
+        function saveVotes(v) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(v));
+        }
+
+        var votes   = loadVotes();
+        var appEl   = document.getElementById('vote-app');
+        var totalEl = document.getElementById('total-line');
+
+        function render() {
+            var total = votes.reduce(function(a, b) { return a + b; }, 0);
+            document.querySelectorAll('.tea-row').forEach(function(row, i) {
+                var pct = total > 0 ? Math.round(votes[i] / total * 100) : 0;
+                row.querySelector('.bar-fill').style.width = pct + '%';
+                row.querySelector('.bar-wrap').setAttribute('aria-valuenow', String(pct));
+                row.querySelector('.vote-count').textContent = votes[i] + ' (' + pct + '%)';
+            });
+            totalEl.textContent = 'Total votes: ' + total;
+        }
+
+        TEAS.forEach(function(name, i) {
+            var row = document.createElement('div');
+            row.className = 'tea-row';
+
+            var nameEl = document.createElement('span');
+            nameEl.className   = 'tea-name';
+            nameEl.textContent = name;
+
+            var barWrap = document.createElement('div');
+            barWrap.className = 'bar-wrap';
+            barWrap.setAttribute('role', 'progressbar');
+            barWrap.setAttribute('aria-valuemin', '0');
+            barWrap.setAttribute('aria-valuemax', '100');
+            barWrap.setAttribute('aria-label', name + ' vote share');
+
+            var barFill = document.createElement('div');
+            barFill.className = 'bar-fill';
+            barWrap.appendChild(barFill);
+
+            var countEl = document.createElement('span');
+            countEl.className = 'vote-count';
+
+            var btn = document.createElement('button');
+            btn.className   = 'vote-btn';
+            btn.textContent = 'Vote';
+            btn.setAttribute('aria-label', 'Vote for ' + name);
+            btn.addEventListener('click', function() {
+                votes[i]++;
+                saveVotes(votes);
+                render();
+            });
+
+            row.appendChild(nameEl);
+            row.appendChild(barWrap);
+            row.appendChild(countEl);
+            row.appendChild(btn);
+            appEl.appendChild(row);
+        });
+
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            votes = TEAS.map(function() { return 0; });
+            saveVotes(votes);
+            render();
+        });
+
+        render();
     </script>
 
 </body>

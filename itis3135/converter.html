@@ -8,6 +8,75 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/default.css">
+    <style>
+        #converter-app {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .conv-pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .pane-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #595959;
+            margin-bottom: 6px;
+            display: block;
+        }
+        #editor {
+            width: 100%;
+            height: 440px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            color: #333333;
+            background: #f8f8f8;
+            border: 2px solid #767676;
+            border-radius: 4px;
+            padding: 12px;
+            resize: vertical;
+            box-sizing: border-box;
+            line-height: 1.6;
+        }
+        #editor:focus {
+            outline: 3px solid #0056b3;
+            outline-offset: 0;
+            border-color: #0056b3;
+        }
+        #preview {
+            height: 440px;
+            overflow-y: auto;
+            border: 2px solid #767676;
+            border-radius: 4px;
+            padding: 12px 18px;
+            background: #ffffff;
+            line-height: 1.75;
+            box-sizing: border-box;
+        }
+        #preview h1, #preview h2, #preview h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #333333;
+        }
+        #preview blockquote {
+            border-left: 4px solid #0056b3;
+            margin: 12px 0;
+            padding: 8px 16px;
+            color: #595959;
+            background: #f0f5ff;
+        }
+        #preview code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 0.88em; }
+        #preview pre  { background: #f0f0f0; padding: 12px; border-radius: 4px; overflow-x: auto; }
+        #preview hr   { border: none; border-top: 2px solid #e0e0e0; margin: 16px 0; }
+        @media (max-width: 680px) {
+            #converter-app { flex-direction: column; }
+            #editor, #preview { height: 260px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -15,13 +84,65 @@
 
     <main>
         <h2>Brew Guide Converter</h2>
+        <p>Write your tea brewing guide in Markdown on the left &mdash; the formatted result appears instantly on the right.</p>
+        <div id="converter-app">
+            <div class="conv-pane">
+                <label for="editor" class="pane-label">Markdown</label>
+                <textarea id="editor" spellcheck="false"></textarea>
+            </div>
+            <div class="conv-pane">
+                <span class="pane-label" id="preview-heading">Preview</span>
+                <div id="preview" role="region" aria-labelledby="preview-heading"></div>
+            </div>
+        </div>
     </main>
 
     <div data-include="components/footer.html"></div>
 
     <script src="scripts/HTMLInclude.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         HTMLInclude();
+
+        var DEFAULT_MD = [
+            '# 🐢 Miraculous Turtle Brew Guide',
+            '',
+            '## Classic Green Tea',
+            '',
+            '**Origin:** Uji, Japan  ',
+            '**Temperature:** 75 °C (167 °F)  ',
+            '**Steep Time:** 2–3 minutes',
+            '',
+            '### Steps',
+            '',
+            '1. Heat filtered water to **75 °C** — never a full boil.',
+            '2. Measure **1 tsp** of loose-leaf green tea per 8 oz.',
+            '3. Steep for 2–3 minutes, then remove the leaves.',
+            '4. Serve immediately and enjoy.',
+            '',
+            '> *"A turtle who has brewed since the Cretaceous knows: patience makes the perfect cup."*',
+            '',
+            '---',
+            '',
+            '## Tasting Notes',
+            '',
+            '- Grassy and fresh',
+            '- Light natural sweetness',
+            '- Clean, lingering finish'
+        ].join('\n');
+
+        marked.use({ breaks: true });
+
+        var editor  = document.getElementById('editor');
+        var preview = document.getElementById('preview');
+
+        function render() {
+            preview.innerHTML = marked.parse(editor.value);
+        }
+
+        editor.value = DEFAULT_MD;
+        editor.addEventListener('input', render);
+        render();
     </script>
 
 </body>

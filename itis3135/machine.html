@@ -8,6 +8,63 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/default.css">
+    <style>
+        #drum-machine {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 28px;
+        }
+        #display {
+            background: #1a1a2e;
+            color: #7ec8e3;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            padding: 14px 40px;
+            border-radius: 6px;
+            min-width: 260px;
+            text-align: center;
+            letter-spacing: 0.06em;
+            border: 2px solid #0056b3;
+            margin-bottom: 22px;
+        }
+        #pad-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 360px;
+            margin: 0 auto 22px auto;
+        }
+        .drum-pad {
+            width: 108px;
+            height: 108px;
+            background: #0056b3;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 6px;
+            transition: background 0.08s, transform 0.08s;
+        }
+        .drum-pad:hover  { background: #003d80; }
+        .drum-pad:focus  { outline: 3px solid #ffcc00; outline-offset: 2px; }
+        .drum-pad.active { background: #002a5c; transform: scale(0.94); }
+        .key-hint {
+            font-size: 0.7rem;
+            font-weight: 400;
+            font-family: 'Source Sans 3', sans-serif;
+            opacity: 0.85;
+            margin-top: 5px;
+        }
+        #kb-hint { font-size: 0.85rem; color: #595959; }
+    </style>
 </head>
 <body>
 
@@ -15,6 +72,12 @@
 
     <main>
         <h2>The Tea Drum</h2>
+        <p>Click a pad or press its keyboard key to play a tea-brewing sound.</p>
+        <div id="drum-machine">
+            <div id="display" aria-live="polite">Hit a pad!</div>
+            <div id="pad-grid" role="group" aria-label="Drum pads"></div>
+            <p id="kb-hint">Keyboard shortcuts: Q W E &nbsp;/&nbsp; A S D &nbsp;/&nbsp; Z X C</p>
+        </div>
     </main>
 
     <div data-include="components/footer.html"></div>
@@ -22,6 +85,99 @@
     <script src="scripts/HTMLInclude.min.js"></script>
     <script>
         HTMLInclude();
+
+        var AudioCtx = window.AudioContext || window.webkitAudioContext;
+        var ctx = null;
+
+        function getCtx() {
+            if (!ctx) { ctx = new AudioCtx(); }
+            if (ctx.state === 'suspended') { ctx.resume(); }
+            return ctx;
+        }
+
+        function tone(freq, type, dur, vol) {
+            var ac = getCtx();
+            var osc = ac.createOscillator();
+            var g   = ac.createGain();
+            osc.connect(g);
+            g.connect(ac.destination);
+            osc.type = type;
+            osc.frequency.value = freq;
+            g.gain.setValueAtTime(vol, ac.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + dur);
+            osc.start(ac.currentTime);
+            osc.stop(ac.currentTime + dur + 0.02);
+        }
+
+        function sweep(f0, f1, type, dur, vol) {
+            var ac = getCtx();
+            var osc = ac.createOscillator();
+            var g   = ac.createGain();
+            osc.connect(g);
+            g.connect(ac.destination);
+            osc.type = type;
+            osc.frequency.setValueAtTime(f0, ac.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(f1, ac.currentTime + dur);
+            g.gain.setValueAtTime(vol, ac.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + dur);
+            osc.start(ac.currentTime);
+            osc.stop(ac.currentTime + dur + 0.02);
+        }
+
+        function noise(dur, vol) {
+            var ac  = getCtx();
+            var n   = Math.ceil(ac.sampleRate * dur);
+            var buf = ac.createBuffer(1, n, ac.sampleRate);
+            var d   = buf.getChannelData(0);
+            for (var i = 0; i < n; i++) { d[i] = Math.random() * 2 - 1; }
+            var src = ac.createBufferSource();
+            var g   = ac.createGain();
+            src.buffer = buf;
+            src.connect(g);
+            g.connect(ac.destination);
+            g.gain.setValueAtTime(vol, ac.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + dur);
+            src.start(ac.currentTime);
+        }
+
+        var PADS = [
+            { key: 'Q', label: 'Steep', play: function() { tone(220,  'sine',     0.8, 0.5); } },
+            { key: 'W', label: 'Pour',  play: function() { sweep(800, 200, 'sine', 0.5, 0.5); } },
+            { key: 'E', label: 'Sip',   play: function() { tone(1320, 'triangle', 0.15, 0.4); } },
+            { key: 'A', label: 'Brew',  play: function() { tone(110,  'sawtooth', 0.4,  0.4); } },
+            { key: 'S', label: 'Stir',  play: function() { sweep(300, 600, 'sine', 0.3, 0.4); } },
+            { key: 'D', label: 'Gulp',  play: function() { tone(550,  'square',   0.18, 0.35); } },
+            { key: 'Z', label: 'Leaf',  play: function() { noise(0.25, 0.4); } },
+            { key: 'X', label: 'Cup',   play: function() { tone(880,  'sine',     0.6,  0.4); } },
+            { key: 'C', label: 'Pot',   play: function() { tone(80,   'sawtooth', 0.5,  0.55); } }
+        ];
+
+        var grid    = document.getElementById('pad-grid');
+        var display = document.getElementById('display');
+
+        function trigger(pad) {
+            pad.play();
+            display.textContent = pad.label;
+            var btn = document.getElementById('pad-' + pad.key);
+            btn.classList.add('active');
+            setTimeout(function() { btn.classList.remove('active'); }, 150);
+        }
+
+        PADS.forEach(function(pad) {
+            var btn = document.createElement('button');
+            btn.id        = 'pad-' + pad.key;
+            btn.className = 'drum-pad';
+            btn.setAttribute('aria-label', pad.label + ' (key ' + pad.key + ')');
+            btn.innerHTML = pad.label + '<span class="key-hint">' + pad.key + '</span>';
+            btn.addEventListener('click', function() { trigger(pad); });
+            grid.appendChild(btn);
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.repeat) { return; }
+            var pad = PADS.find(function(p) { return p.key === e.key.toUpperCase(); });
+            if (pad) { trigger(pad); }
+        });
     </script>
 
 </body>

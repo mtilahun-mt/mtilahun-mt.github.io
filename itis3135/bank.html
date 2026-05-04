@@ -8,6 +8,97 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/default.css">
+    <style>
+        #register-app {
+            display: flex;
+            gap: 32px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .reg-panel { flex: 1; min-width: 240px; }
+        .reg-panel h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #333333;
+            border-left: 4px solid #0056b3;
+            padding-left: 10px;
+            margin-top: 0;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            background: #f9f9f9;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .menu-item:hover   { background: #e8f0fe; border-color: #0056b3; }
+        .menu-item.selected { background: #0056b3; color: #ffffff; border-color: #0056b3; }
+        .menu-price { font-family: 'Courier New', monospace; }
+        .field-row { margin-bottom: 14px; }
+        .field-row label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #333333;
+        }
+        .field-row input {
+            width: 100%;
+            padding: 8px 10px;
+            font-size: 1rem;
+            font-family: 'Source Sans 3', sans-serif;
+            border: 2px solid #767676;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: #333333;
+        }
+        .field-row input:focus { outline: 3px solid #0056b3; border-color: #0056b3; }
+        #sale-btn {
+            width: 100%;
+            padding: 11px;
+            background: #0056b3;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+        #sale-btn:hover  { background: #003d80; }
+        #sale-btn:focus  { outline: 3px solid #003d80; outline-offset: 2px; }
+        #result-box {
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 6px;
+            border: 2px solid #767676;
+            min-height: 60px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            display: none;
+        }
+        #result-box.open  { background: #e8f5e9; border-color: #2d6a00; color: #1b4300; }
+        #result-box.closed { background: #fff8e1; border-color: #7a5500; color: #4a3300; }
+        #result-box.insufficient { background: #fdecea; border-color: #b30000; color: #7a0000; }
+        .cid-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .cid-table th, .cid-table td {
+            text-align: left;
+            padding: 5px 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .cid-table th { font-weight: 700; color: #595959; }
+        .price-display {
+            font-family: 'Courier New', monospace;
+            font-size: 1.6rem;
+            color: #0056b3;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,6 +106,38 @@
 
     <main>
         <h2>Tea Treasury</h2>
+        <p>Select a tea from the menu, enter the cash received, and process the sale.</p>
+
+        <div id="register-app">
+
+            <div class="reg-panel">
+                <h3>Tea Menu</h3>
+                <div id="menu-list"></div>
+            </div>
+
+            <div class="reg-panel">
+                <h3>Register</h3>
+                <p class="price-display" id="price-display">Price: $0.00</p>
+
+                <div class="field-row">
+                    <label for="cash-input">Cash Received ($)</label>
+                    <input type="number" id="cash-input" min="0" step="0.01" placeholder="0.00">
+                </div>
+
+                <button id="sale-btn">Process Sale</button>
+
+                <div id="result-box" role="alert"></div>
+            </div>
+
+            <div class="reg-panel">
+                <h3>Cash in Drawer</h3>
+                <table class="cid-table" id="cid-table">
+                    <thead><tr><th>Denomination</th><th>Amount</th></tr></thead>
+                    <tbody id="cid-body"></tbody>
+                </table>
+            </div>
+
+        </div>
     </main>
 
     <div data-include="components/footer.html"></div>
@@ -22,6 +145,169 @@
     <script src="scripts/HTMLInclude.min.js"></script>
     <script>
         HTMLInclude();
+
+        var MENU = [
+            { name: 'Jade Mist Green Tea',  price: 12.99 },
+            { name: 'Midnight Oolong',       price: 16.49 },
+            { name: 'Golden Tips Black Tea', price:  8.99 },
+            { name: 'Matcha Ceremonial',     price: 24.99 },
+            { name: 'Jasmine Pearls',        price: 15.99 },
+            { name: 'Turtle Shell Blend',    price: 19.99 }
+        ];
+
+        /* denomination name, unit value in cents */
+        var DENOMS = [
+            ['HUNDREDS', 10000],
+            ['TWENTIES',  2000],
+            ['TENS',      1000],
+            ['FIVES',      500],
+            ['ONES',       100],
+            ['QUARTERS',    25],
+            ['DIMES',       10],
+            ['NICKELS',      5],
+            ['PENNIES',      1]
+        ];
+
+        /* cash in drawer as [name, dollars] — mutable */
+        var cid = [
+            ['PENNIES',    1.00],
+            ['NICKELS',    2.00],
+            ['DIMES',      3.00],
+            ['QUARTERS',   5.00],
+            ['ONES',      10.00],
+            ['FIVES',     20.00],
+            ['TENS',      30.00],
+            ['TWENTIES',  60.00],
+            ['HUNDREDS', 100.00]
+        ];
+
+        var selectedPrice = 0;
+
+        /* --- Build menu --- */
+        var menuList = document.getElementById('menu-list');
+        var menuItems = MENU.map(function(item, i) {
+            var el = document.createElement('div');
+            el.className = 'menu-item';
+            el.setAttribute('role', 'button');
+            el.setAttribute('tabindex', '0');
+            el.setAttribute('aria-pressed', 'false');
+            el.innerHTML = '<span>' + item.name + '</span><span class="menu-price">$' + item.price.toFixed(2) + '</span>';
+
+            function select() {
+                menuItems.forEach(function(m) {
+                    m.el.classList.remove('selected');
+                    m.el.setAttribute('aria-pressed', 'false');
+                });
+                el.classList.add('selected');
+                el.setAttribute('aria-pressed', 'true');
+                selectedPrice = item.price;
+                document.getElementById('price-display').textContent = 'Price: $' + selectedPrice.toFixed(2);
+                document.getElementById('result-box').style.display = 'none';
+            }
+
+            el.addEventListener('click', select);
+            el.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); } });
+            menuList.appendChild(el);
+            return { el: el };
+        });
+
+        /* --- Render CID table --- */
+        function renderCid() {
+            var tbody = document.getElementById('cid-body');
+            tbody.innerHTML = '';
+            cid.forEach(function(row) {
+                var tr = document.createElement('tr');
+                tr.innerHTML = '<td>' + row[0] + '</td><td>$' + row[1].toFixed(2) + '</td>';
+                tbody.appendChild(tr);
+            });
+        }
+        renderCid();
+
+        /* --- Cash register algorithm --- */
+        function calcChange(price, cash, cidArr) {
+            var changeDue = Math.round((cash - price) * 100);
+            var totalCid  = Math.round(cidArr.reduce(function(s, r) { return s + r[1] * 100; }, 0));
+
+            if (changeDue < 0) { return { status: 'INSUFFICIENT_FUNDS', change: [] }; }
+            if (changeDue === 0) { return { status: 'EXACT', change: [] }; }
+            if (changeDue === totalCid) { return { status: 'CLOSED', change: cidArr.slice() }; }
+
+            var cidCents = cidArr.map(function(r) { return [r[0], Math.round(r[1] * 100)]; });
+            var cidMap   = {};
+            cidCents.forEach(function(r) { cidMap[r[0]] = r[1]; });
+
+            var result   = [];
+            var remaining = changeDue;
+
+            DENOMS.forEach(function(d) {
+                var name = d[0], val = d[1];
+                var available = cidMap[name] || 0;
+                var given = 0;
+                while (remaining >= val && available >= val) {
+                    remaining -= val;
+                    available -= val;
+                    given += val;
+                }
+                if (given > 0) { result.push([name, given / 100]); }
+            });
+
+            if (remaining > 0) { return { status: 'INSUFFICIENT_FUNDS', change: [] }; }
+            return { status: 'OPEN', change: result };
+        }
+
+        /* --- Process sale --- */
+        document.getElementById('sale-btn').addEventListener('click', function() {
+            var resultBox = document.getElementById('result-box');
+            resultBox.className = '';
+            resultBox.style.display = 'block';
+
+            if (selectedPrice === 0) {
+                resultBox.className = 'insufficient';
+                resultBox.textContent = 'Please select a tea from the menu first.';
+                return;
+            }
+
+            var cashVal = parseFloat(document.getElementById('cash-input').value);
+            if (isNaN(cashVal) || cashVal <= 0) {
+                resultBox.className = 'insufficient';
+                resultBox.textContent = 'Please enter a valid cash amount.';
+                return;
+            }
+
+            var res = calcChange(selectedPrice, cashVal, cid);
+
+            if (res.status === 'EXACT') {
+                resultBox.className = 'open';
+                resultBox.textContent = 'Exact change given — no change needed. Enjoy your tea!';
+                return;
+            }
+
+            if (res.status === 'INSUFFICIENT_FUNDS') {
+                resultBox.className = 'insufficient';
+                resultBox.textContent = 'Status: INSUFFICIENT FUNDS — not enough change in the drawer.';
+                return;
+            }
+
+            if (res.status === 'CLOSED') {
+                resultBox.className = 'closed';
+                resultBox.innerHTML = '<strong>Status: CLOSED</strong> — change uses all remaining cash in drawer.<br>';
+            } else {
+                resultBox.className = 'open';
+                resultBox.innerHTML = '<strong>Status: OPEN</strong> — Change due: $' + (cashVal - selectedPrice).toFixed(2) + '<br>';
+            }
+
+            res.change.forEach(function(row) {
+                resultBox.innerHTML += row[0] + ': $' + row[1].toFixed(2) + '<br>';
+            });
+
+            /* deduct from drawer */
+            res.change.forEach(function(row) {
+                cid.forEach(function(d) {
+                    if (d[0] === row[0]) { d[1] = Math.round((d[1] - row[1]) * 100) / 100; }
+                });
+            });
+            renderCid();
+        });
     </script>
 
 </body>
